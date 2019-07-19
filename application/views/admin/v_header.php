@@ -8,7 +8,7 @@ $jum_pesan = $query->num_rows();
 <header class="main-header">
 
   <!-- Logo -->
-  <a href="index2.html" class="logo">
+  <a href="<?php echo site_url('admin/dashboard') ?>" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">APM</span>
     <!-- logo for regular state and mobile devices -->
@@ -44,20 +44,20 @@ foreach ($inbox->result_array() as $in):
 	$inbox_pesan = $in['pesan'];
 
 	?>
-																			                 <li><!-- start message -->
-																			                   <a href="<?php echo base_url() . 'admin/inbox' ?>">
-																			                     <div class="pull-left">
-																			                       <img src="<?php echo base_url() . 'assets/images/user_blank.png' ?>" class="img-circle" alt="User Image">
-																			                     </div>
-																			                     <h4>
-																			                       <?php echo $inbox_nama; ?>
-																			                       <small><i class="fa fa-clock-o"></i> <?php echo $inbox_tgl; ?></small>
-																			                     </h4>
-																			                     <p><?php echo $inbox_pesan; ?></p>
-																			                   </a>
-																			                 </li>
-																			                 <!-- end message -->
-																			               <?php endforeach;?>
+																							                 <li><!-- start message -->
+																							                   <a href="<?php echo base_url() . 'admin/inbox' ?>">
+																							                     <div class="pull-left">
+																							                       <img src="<?php echo base_url() . 'assets/images/user_blank.png' ?>" class="img-circle" alt="User Image">
+																							                     </div>
+																							                     <h4>
+																							                       <?php echo $inbox_nama; ?>
+																							                       <small><i class="fa fa-clock-o"></i> <?php echo $inbox_tgl; ?></small>
+																							                     </h4>
+																							                     <p><?php echo $inbox_pesan; ?></p>
+																							                   </a>
+																							                 </li>
+																							                 <!-- end message -->
+																							               <?php endforeach;?>
              </ul>
            </li>
            <li class="footer"><a href="<?php echo base_url() . 'admin/inbox' ?>">Lihat Semua Pesan</a></li>

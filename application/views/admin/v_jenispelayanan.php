@@ -240,11 +240,15 @@ foreach ($data->result_array() as $i):
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
 
-       CKEDITOR.replaceAll('ckeditor1',{
-        filebrowserImageBrowseUrl : '<?php echo base_url('assets/kcfinder'); ?>'
+     CKEDITOR.replaceAll('ckeditor1',{
+      filebrowserBrowseUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=2&editor=ckeditor&fldr=')?>',
+      filebrowserUploadUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=2&editor=ckeditor&fldr=');?>',
+      filebrowserImageBrowseUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=1&editor=ckeditor&fldr=');?>'
     });
-        CKEDITOR.replace('ckeditor',{
-        filebrowserImageBrowseUrl : '<?php echo base_url('assets/kcfinder'); ?>'
+    CKEDITOR.replace('ckeditor',{
+      filebrowserBrowseUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=2&editor=ckeditor&fldr=')?>',
+      filebrowserUploadUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=2&editor=ckeditor&fldr=');?>',
+      filebrowserImageBrowseUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=1&editor=ckeditor&fldr=');?>'
     });
     CKEDITOR.config.removeButtons = 'Print,NewPage,Preview,Save,Templates,Find,Replace,SelectAll,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CreateDiv,Language,Anchor,Flash,PageBreak,Iframe,About,ShowBlocks';
     CKEDITOR.config.toolbarGroups = [

@@ -71,46 +71,46 @@ $this->load->view('admin/v_menu');
 $no = 0;
 foreach ($data->result_array() as $i):
 	$no++;
-	$id = $i['id'];
+	$id1 = $i['id'];
 	$judul = $i['judul'];
 	$deskripsi = $i['isi'];
 	$author = $i['author'];
-	$tanggal = $i['tanggal'];
+	$tanggal = $i['tanggal1'];
 
 	?>
-													                     <tr>
-													                      <td><?php echo $no; ?></td>
-													                      <td><?php echo $judul; ?></td>
-													                      <td><?php echo $deskripsi; ?></td>
-													                      <td><?php echo $tanggal; ?></td>
-													                      <td><?php echo $author; ?></td>
-													                      <td style="text-align:right;">
-													                        <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id; ?>"><span class="fa fa-pencil"></span></a>
-													                        <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id; ?>"><span class="fa fa-trash"></span></a>
-													                      </td>
-													                    </tr>
-													                  <?php endforeach;?>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <?php $this->load->view('admin/v_footer');?>
+							                     <tr>
+							                       <td><?php echo $no; ?></td>
+							                       <td><?php echo $judul; ?></td>
+							                       <td><?php echo $deskripsi; ?></td>
+							                       <td><?php echo $tanggal; ?></td>
+							                       <td><?php echo $author; ?></td>
+							                       <td style="text-align:right;">
+							                         <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id1; ?>"><span class="fa fa-pencil"></span></a>
+							                         <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id1; ?>"><span class="fa fa-trash"></span></a>
+							                       </td>
+							                     </tr>
+							                   <?php endforeach;?>
+                 </tbody>
+               </table>
+             </div>
+             <!-- /.box-body -->
+           </div>
+           <!-- /.box -->
+         </div>
+         <!-- /.col -->
+       </div>
+       <!-- /.row -->
+     </section>
+     <!-- /.content -->
+   </div>
+   <!-- /.content-wrapper -->
+   <?php $this->load->view('admin/v_footer');?>
 
-</div>
-<!-- ./wrapper -->
+ </div>
+ <!-- ./wrapper -->
 
-<!--Modal Add Pengguna-->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+ <!--Modal Add Pengguna-->
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -146,80 +146,80 @@ foreach ($data->result_array() as $i):
 
 
 <?php foreach ($data->result_array() as $i):
-	$id = $i['id'];
+	$id1 = $i['id'];
 	$judul = $i['judul'];
 	$deskripsi = $i['isi'];
 	$author = $i['author'];
-	$tanggal = $i['tanggal'];
+	$tanggal = $i['tanggal1'];
 	?>
-													 <!--Modal Edit Pengguna-->
-													 <div class="modal fade" id="ModalEdit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-													  <div class="modal-dialog modal-lg" role="document">
-													    <div class="modal-content">
-													      <div class="modal-header">
-													        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-													        <h4 class="modal-title" id="myModalLabel">Edit Pengumuman</h4>
-													      </div>
-													      <form class="form-horizontal" action="<?php echo base_url() . 'admin/pengumuman/update_pengumuman' ?>" method="post" enctype="multipart/form-data">
-													        <div class="modal-body">
+							  <!--Modal Edit Pengguna-->
+							  <div class="modal fade" id="ModalEdit<?php echo $id1; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							   <div class="modal-dialog modal-lg" role="document">
+							     <div class="modal-content">
+							       <div class="modal-header">
+							         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+							         <h4 class="modal-title" id="myModalLabel">Edit Pengumuman</h4>
+							       </div>
+							       <form class="form-horizontal" action="<?php echo base_url() . 'admin/pengumuman/update_pengumuman' ?>" method="post" enctype="multipart/form-data">
+							         <div class="modal-body">
 
-													          <div class="form-group">
-													            <label for="inputUserName" class="col-sm-2 control-label">Judul</label>
-													            <div class="col-sm-10">
-													              <input type="hidden" name="kode" value="<?php echo $id; ?>">
-													              <input type="text" name="xjudul" class="form-control" value="<?php echo $judul; ?>" id="inputUserName" placeholder="Judul" required>
-													            </div>
-													          </div>
-													          <div class="form-group">
-													            <label for="inputUserName" class="col-sm-2 control-label">Isi</label>
-													            <div class="col-sm-10">
-													             <textarea class="ckeditor1" id="ckeditor1" name="xisi" required><?php echo $deskripsi; ?></textarea>
+							           <div class="form-group">
+							             <label for="inputUserName" class="col-sm-2 control-label">Judul</label>
+							             <div class="col-sm-10">
+							               <input type="hidden" name="kode" value="<?php echo $id1; ?>">
+							               <input type="text" name="xjudul" class="form-control" value="<?php echo $judul; ?>" id="inputUserName" placeholder="Judul" required>
+							             </div>
+							           </div>
+							           <div class="form-group">
+							             <label for="inputUserName" class="col-sm-2 control-label">Isi</label>
+							             <div class="col-sm-10">
+							              <textarea class="ckeditor1" id="ckeditor1" name="xisi" required><?php echo $deskripsi; ?></textarea>
 
 
-													           </div>
-													         </div>
+							            </div>
+							          </div>
 
-													       </div>
-													       <div class="modal-footer">
-													        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-													        <button type="submit" class="btn btn-primary btn-flat" id="simpan">Update</button>
-													      </div>
-													    </form>
-													  </div>
-													</div>
-													</div>
-													<?php endforeach;?>
+							        </div>
+							        <div class="modal-footer">
+							         <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+							         <button type="submit" class="btn btn-primary btn-flat" id="simpan">Update</button>
+							       </div>
+							     </form>
+							   </div>
+							 </div>
+							</div>
+							<?php endforeach;?>
 
 <?php foreach ($data->result_array() as $i):
-	$id = $i['id'];
+	$id1 = $i['id'];
 	$judul = $i['judul'];
 	$deskripsi = $i['isi'];
 	$author = $i['author'];
-	$tanggal = $i['tanggal'];
+	$tanggal = $i['tanggal1'];
 	?>
-													 <!--Modal Hapus Pengguna-->
-													 <div class="modal fade" id="ModalHapus<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-													  <div class="modal-dialog" role="document">
-													    <div class="modal-content">
-													      <div class="modal-header">
-													        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-													        <h4 class="modal-title" id="myModalLabel">Hapus Pengumuman</h4>
-													      </div>
-													      <form class="form-horizontal" action="<?php echo base_url() . 'admin/pengumuman/hapus_pengumuman' ?>" method="post" enctype="multipart/form-data">
-													        <div class="modal-body">
-													         <input type="hidden" name="kode" value="<?php echo $id; ?>"/>
-													         <p>Apakah Anda yakin mau menghapus pengumuman <b><?php echo $judul; ?></b> ?</p>
+							  <!--Modal Hapus Pengguna-->
+							  <div class="modal fade" id="ModalHapus<?php echo $id1; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							   <div class="modal-dialog" role="document">
+							     <div class="modal-content">
+							       <div class="modal-header">
+							         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+							         <h4 class="modal-title" id="myModalLabel">Hapus Pengumuman</h4>
+							       </div>
+							       <form class="form-horizontal" action="<?php echo base_url() . 'admin/pengumuman/hapus_pengumuman' ?>" method="post" enctype="multipart/form-data">
+							         <div class="modal-body">
+							          <input type="hidden" name="kode" value="<?php echo $id1; ?>"/>
+							          <p>Apakah Anda yakin mau menghapus pengumuman <b><?php echo $judul; ?></b> ?</p>
 
-													       </div>
-													       <div class="modal-footer">
-													        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-													        <button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
-													      </div>
-													    </form>
-													  </div>
-													</div>
-													</div>
-													<?php endforeach;?>
+							        </div>
+							        <div class="modal-footer">
+							         <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+							         <button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
+							       </div>
+							     </form>
+							   </div>
+							 </div>
+							</div>
+							<?php endforeach;?>
 
 
 
@@ -250,11 +250,15 @@ foreach ($data->result_array() as $i):
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-CKEDITOR.replaceAll('ckeditor1',{
-        filebrowserImageBrowseUrl : '<?php echo base_url('assets/kcfinder'); ?>'
+    CKEDITOR.replaceAll('ckeditor1',{
+      filebrowserBrowseUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=2&editor=ckeditor&fldr=')?>',
+      filebrowserUploadUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=2&editor=ckeditor&fldr=');?>',
+      filebrowserImageBrowseUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=1&editor=ckeditor&fldr=');?>'
     });
-        CKEDITOR.replace('ckeditor',{
-        filebrowserImageBrowseUrl : '<?php echo base_url('assets/kcfinder'); ?>'
+    CKEDITOR.replace('ckeditor',{
+       filebrowserBrowseUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=2&editor=ckeditor&fldr=')?>',
+      filebrowserUploadUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=2&editor=ckeditor&fldr=');?>',
+      filebrowserImageBrowseUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=1&editor=ckeditor&fldr=');?>'
     });
     CKEDITOR.config.removeButtons = 'Print,NewPage,Preview,Save,Templates,Find,Replace,SelectAll,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CreateDiv,Language,Anchor,Flash,PageBreak,Iframe,About,ShowBlocks';
     CKEDITOR.config.toolbarGroups = [

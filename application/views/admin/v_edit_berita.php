@@ -14,7 +14,7 @@
  <!-- iCheck for checkboxes and radio inputs -->
  <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/iCheck/all.css' ?>">
  <!-- Bootstrap Color Picker -->
- <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/colorpicker/bootstrap-colorpicker.min.css' ?>">
+ <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css' ?>">
  <!-- Bootstrap time Picker -->
  <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/timepicker/bootstrap-timepicker.min.css' ?>">
  <!-- Select2 -->
@@ -38,7 +38,7 @@ $this->load->view('admin/v_menu');
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Berita
+        Edit Berita
         <small></small>
       </h1>
       <?php $this->load->view('admin/v_bread')?>
@@ -51,7 +51,7 @@ $this->load->view('admin/v_menu');
       <!-- SELECT2 EXAMPLE -->
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Update Berita</h3>
+          <h3 class="box-title">Judul</h3>
         </div>
         <?php
 $b = $data->row_array();
@@ -127,6 +127,7 @@ foreach ($kat->result_array() as $i) {
 
               <div class="form-group">
                 <label>Gambar</label>
+                <input type="hidden" value="<?php echo $b['gambar']; ?>" name="gambar">
                 <input type="file" name="filefoto" style="width: 100%;">
               </div>
               <!-- /.form group -->
@@ -170,7 +171,7 @@ foreach ($kat->result_array() as $i) {
 <!-- bootstrap datepicker -->
 <script src="<?php echo base_url() . 'assets/plugins/datepicker/bootstrap-datepicker.js' ?>"></script>
 <!-- bootstrap color picker -->
-<script src="<?php echo base_url() . 'assets/plugins/colorpicker/bootstrap-colorpicker.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js' ?>"></script>
 <!-- bootstrap time picker -->
 <script src="<?php echo base_url() . 'assets/plugins/timepicker/bootstrap-timepicker.min.js' ?>"></script>
 <!-- SlimScroll 1.3.0 -->
@@ -192,7 +193,9 @@ foreach ($kat->result_array() as $i) {
     // instance, using default configuration.
 
     CKEDITOR.replace('ckeditor',{
-      filebrowserImageBrowseUrl : '<?php echo base_url('assets/kcfinder'); ?>'
+      filebrowserBrowseUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=2&editor=ckeditor&fldr=')?>',
+      filebrowserUploadUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=2&editor=ckeditor&fldr=');?>',
+      filebrowserImageBrowseUrl : '<?=base_url('assets/filemanager/dialog.php?akey=N0bUd1N0W4t1&type=1&editor=ckeditor&fldr=');?>'
     });
     CKEDITOR.config.removeButtons = 'Print,NewPage,Preview,Save,Templates,Find,Replace,SelectAll,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CreateDiv,Language,Anchor,Flash,PageBreak,Iframe,About,ShowBlocks';
     CKEDITOR.config.toolbarGroups = [

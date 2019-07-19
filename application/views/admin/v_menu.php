@@ -130,7 +130,7 @@ $jum_pesan = $query->num_rows();
           </span>
         </a>
       </li>
-      <li class="treeview <?php if ($this->uri->segment(2) == "album" || $this->uri->segment(2) == "galeri") {echo "active";}?>">
+      <li class="treeview <?php if ($this->uri->segment(2) == "album" || $this->uri->segment(2) == "galeri" || $this->uri->segment(2) == "instagram") {echo "active";}?>">
         <a href="#">
           <i class="fa fa-camera"></i>
           <span>Gallery</span>
@@ -141,9 +141,10 @@ $jum_pesan = $query->num_rows();
         <ul class="treeview-menu">
           <li class="<?php if ($this->uri->segment(2) == "album") {echo "active";}?>"><a href="<?php echo base_url() . 'admin/album' ?>"><i class="fa fa-clone"></i> Album</a></li>
           <li class="<?php if ($this->uri->segment(2) == "galeri") {echo "active";}?>"><a href="<?php echo base_url() . 'admin/galeri' ?>"><i class="fa fa-picture-o"></i> Photos</a></li>
+           <li class="<?php if ($this->uri->segment(2) == "instagram") {echo "active";}?>"><a href="<?php echo base_url() . 'admin/instagram' ?>"><i class="fa fa-instagram"></i>Instagram</a></li>
         </ul>
       </li>
-      <li class="header">Ux</li>
+      <li class="header">User</li>
       <li class="<?php if ($this->uri->segment(2) == "inbox") {echo "active";}?>">
         <a href="<?php echo base_url() . 'admin/inbox' ?>">
           <i class="fa fa-envelope"></i> <span>Inbox</span>

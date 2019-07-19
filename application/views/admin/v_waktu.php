@@ -31,7 +31,7 @@ $this->load->view('admin/v_menu');
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          waktu Berita
+          Waktu Pelayanan
           <small></small>
         </h1>
         <?php $this->load->view('admin/v_bread')?>
@@ -69,16 +69,16 @@ foreach ($data->result_array() as $i):
 	$hari = $i['hari'];
 	$jam = $i['jam'];
 	?>
-			                     <tr>
-			                       <td><?php echo $no; ?></td>
-			                       <td><?php echo $hari; ?></td>
-			                       <td><?php echo $jam; ?></td>
-			                       <td style="text-align:right;">
-			                        <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id; ?>"><span class="fa fa-pencil"></span></a>
-			                        <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id; ?>"><span class="fa fa-trash"></span></a>
-			                      </td>
-			                    </tr>
-			                  <?php endforeach;?>
+						                     <tr>
+						                       <td><?php echo $no; ?></td>
+						                       <td><?php echo $hari; ?></td>
+						                       <td><?php echo $jam; ?></td>
+						                       <td style="text-align:right;">
+						                        <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id; ?>"><span class="fa fa-pencil"></span></a>
+						                        <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id; ?>"><span class="fa fa-trash"></span></a>
+						                      </td>
+						                    </tr>
+						                  <?php endforeach;?>
                 </tbody>
               </table>
             </div>
@@ -117,7 +117,7 @@ foreach ($data->result_array() as $i):
               <div class="form-group">
                 <label for="inputUserName" class="col-sm-4 control-label">Hari</label>
                 <div class="col-sm-7">
-                  <input type="text" name="xhari" class="form-control" id="inputUserName" placeholder="Hair" required>
+                  <input type="text" name="xhari" class="form-control" id="inputUserName" placeholder="Hari" required>
                 </div>
               </div>
 
@@ -144,70 +144,70 @@ foreach ($data->result_array() as $i):
 	$hari = $i['hari'];
 	$jam = $i['jam'];
 	?>
-			     <!--Modal Edit Pengguna-->
-			     <div class="modal fade" id="ModalEdit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			       <div class="modal-dialog" role="document">
-			         <div class="modal-content">
-			           <div class="modal-header">
-			             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-			             <h4 class="modal-title" id="myModalLabel">Edit waktu</h4>
-			           </div>
-			           <form class="form-horizontal" action="<?php echo base_url() . 'admin/waktu/update_waktu' ?>" method="post" enctype="multipart/form-data">
-			             <div class="modal-body">
+						     <!--Modal Edit Pengguna-->
+						     <div class="modal fade" id="ModalEdit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						       <div class="modal-dialog" role="document">
+						         <div class="modal-content">
+						           <div class="modal-header">
+						             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+						             <h4 class="modal-title" id="myModalLabel">Edit waktu</h4>
+						           </div>
+						           <form class="form-horizontal" action="<?php echo base_url() . 'admin/waktu/update_waktu' ?>" method="post" enctype="multipart/form-data">
+						             <div class="modal-body">
 
-			               <div class="form-group">
-			                 <label for="inputUserName" class="col-sm-4 control-label">Hari</label>
-			                 <div class="col-sm-7">
-			                  <input type="hidden" name="kode" value="<?php echo $id; ?>"/>
-			                  <input type="text" name="xhari" class="form-control" id="inputUserName" value="<?php echo $hari; ?>" placeholder="Hari" required>
-			                </div>
-			              </div>
-			              <div class="form-group">
-			                <label for="inputUserName" class="col-sm-4 control-label">Jam</label>
-			                <div class="col-sm-7">
-			                 <input type="text" name="xjam" class="form-control" id="inputUserName" value="<?php echo $jam; ?>" placeholder="ex= 08.00-15.00WIB" required>
-			               </div>
-			             </div>
+						               <div class="form-group">
+						                 <label for="inputUserName" class="col-sm-4 control-label">Hari</label>
+						                 <div class="col-sm-7">
+						                  <input type="hidden" name="kode" value="<?php echo $id; ?>"/>
+						                  <input type="text" name="xhari" class="form-control" id="inputUserName" value="<?php echo $hari; ?>" placeholder="Hari" required>
+						                </div>
+						              </div>
+						              <div class="form-group">
+						                <label for="inputUserName" class="col-sm-4 control-label">Jam</label>
+						                <div class="col-sm-7">
+						                 <input type="text" name="xjam" class="form-control" id="inputUserName" value="<?php echo $jam; ?>" placeholder="ex= 08.00-15.00WIB" required>
+						               </div>
+						             </div>
 
-			           </div>
-			           <div class="modal-footer">
-			             <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-			             <button type="submit" class="btn btn-primary btn-flat" id="simpan">Update</button>
-			           </div>
-			         </form>
-			       </div>
-			     </div>
-			   </div>
-			 <?php endforeach;?>
+						           </div>
+						           <div class="modal-footer">
+						             <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+						             <button type="submit" class="btn btn-primary btn-flat" id="simpan">Update</button>
+						           </div>
+						         </form>
+						       </div>
+						     </div>
+						   </div>
+						 <?php endforeach;?>
 
  <?php foreach ($data->result_array() as $i):
 	$id = $i['id'];
 	$hari = $i['hari'];
 	$jam = $i['jam'];
 	?>
-			   <!--Modal Hapus Pengguna-->
-			   <div class="modal fade" id="ModalHapus<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			     <div class="modal-dialog" role="document">
-			       <div class="modal-content">
-			         <div class="modal-header">
-			           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-			           <h4 class="modal-title" id="myModalLabel">Hapus waktu</h4>
-			         </div>
-			         <form class="form-horizontal" action="<?php echo base_url() . 'admin/waktu/hapus_waktu' ?>" method="post" enctype="multipart/form-data">
-			           <div class="modal-body">
-			            <input type="hidden" name="kode" value="<?php echo $id; ?>"/>
-			            <p>Apakah Anda yakin mau menghapus waktu buka <b><?php echo $hari; ?></b> ?</p>
+						   <!--Modal Hapus Pengguna-->
+						   <div class="modal fade" id="ModalHapus<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						     <div class="modal-dialog" role="document">
+						       <div class="modal-content">
+						         <div class="modal-header">
+						           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+						           <h4 class="modal-title" id="myModalLabel">Hapus waktu</h4>
+						         </div>
+						         <form class="form-horizontal" action="<?php echo base_url() . 'admin/waktu/hapus_waktu' ?>" method="post" enctype="multipart/form-data">
+						           <div class="modal-body">
+						            <input type="hidden" name="kode" value="<?php echo $id; ?>"/>
+						            <p>Apakah Anda yakin mau menghapus waktu buka <b><?php echo $hari; ?></b> ?</p>
 
-			          </div>
-			          <div class="modal-footer">
-			           <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-			           <button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
-			         </div>
-			       </form>
-			     </div>
-			   </div>
-			 </div>
-			<?php endforeach;?>
+						          </div>
+						          <div class="modal-footer">
+						           <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+						           <button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
+						         </div>
+						       </form>
+						     </div>
+						   </div>
+						 </div>
+						<?php endforeach;?>
 
 
 

@@ -6,6 +6,7 @@ class Galeri extends CI_Controller {
 			$url = base_url('administrator');
 			redirect($url);
 		};
+		$this->load->model('m_identitas');
 		$this->load->model('m_album');
 		$this->load->model('m_galeri');
 		$this->load->model('m_pengguna');
@@ -13,7 +14,7 @@ class Galeri extends CI_Controller {
 	}
 
 	function index() {
-
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$x['data'] = $this->m_galeri->get_all_galeri();
 		$x['alb'] = $this->m_album->get_all_album();
 		$this->load->view('admin/v_galeri', $x);

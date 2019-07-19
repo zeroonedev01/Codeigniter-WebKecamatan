@@ -8,13 +8,13 @@
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/font-awesome/css/font-awesome.min.css' ?>">
 	<!-- DataTables -->
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/datatables/dataTables.bootstrap.css' ?>">
-	<link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/daterangepicker/daterangepicker.css' ?>">
+
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/dist/css/AdminLTE.min.css' ?>">
-	<link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/daterangepicker/daterangepicker.css' ?>">
-	<link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/timepicker/bootstrap-timepicker.min.css' ?>">
+	<link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css' ?>">
+	<link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css' ?>">
+
 	<!-- bootstrap datepicker -->
-	<link rel="stylesheet" href="<?php echo base_url() . 'assets/plugins/datepicker/datepicker3.css' ?>">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   	folder instead of downloading all of them to reduce the load. -->
   	<link rel="stylesheet" href="<?php echo base_url() . 'assets/dist/css/skins/_all-skins.min.css' ?>">
@@ -61,11 +61,11 @@ $this->load->view('admin/v_bread');
   							<thead>
   								<tr>
   									<th style="width:70px;">No</th>
-  									<th>#</th>
+  									<th>Tanggal Post</th>
   									<th>Agenda</th>
   									<th>Tanggal</th>
   									<th>Tempat</th>
-  									<th>Waktu</th>
+  									<th>color</th>
   									<th>Author</th>
   									<th style="text-align:right;">Aksi</th>
   								</tr>
@@ -81,26 +81,26 @@ foreach ($data->result_array() as $i):
 	$agenda_mulai = $i['startdate'];
 	$agenda_selesai = $i['enddate'];
 	$agenda_tempat = $i['tempat'];
-	$agenda_waktu = $i['waktu'];
+	$agenda_color = $i['color'];
 	$agenda_keterangan = $i['ket'];
 	$agenda_author = $i['userid'];
 	$tanggal = $i['tanggal'];
 
 	?>
-	  									<tr>
-	  										<td><?php echo $no; ?></td>
-	  										<td><?php echo $tanggal; ?></td>
-	  										<td><?php echo $agenda_nama; ?></td>
-	  										<td><?php echo $agenda_mulai . ' s/d ' . $agenda_selesai; ?></td>
-	  										<td><?php echo $agenda_tempat; ?></td>
-	  										<td><?php echo $agenda_waktu; ?></td>
-	  										<td><?php echo $agenda_author; ?></td>
-	  										<td style="text-align:right;">
-	  											<a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $agenda_id; ?>"><span class="fa fa-pencil"></span></a>
-	  											<a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $agenda_id; ?>"><span class="fa fa-trash"></span></a>
-	  										</td>
-	  									</tr>
-	  								<?php endforeach;?>
+																												  									<tr>
+																												  										<td><?php echo $no; ?></td>
+																												  										<td><?php echo $tanggal; ?></td>
+																												  										<td><?php echo $agenda_nama; ?></td>
+																												  										<td><?php echo $agenda_mulai . ' s/d ' . $agenda_selesai; ?></td>
+																												  										<td><?php echo $agenda_tempat; ?></td>
+																												  										<td><?php echo $agenda_color; ?></td>
+																												  										<td><?php echo $agenda_author; ?></td>
+																												  										<td style="text-align:right;">
+																												  											<a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $agenda_id; ?>"><span class="fa fa-pencil"></span></a>
+																												  											<a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $agenda_id; ?>"><span class="fa fa-trash"></span></a>
+																												  										</td>
+																												  									</tr>
+																												  								<?php endforeach;?>
   							</tbody>
   						</table>
   					</div>
@@ -147,11 +147,11 @@ foreach ($data->result_array() as $i):
 					<div class="form-group">
 						<label for="inputUserName" class="col-sm-4 control-label">Mulai</label>
 						<div class="col-sm-7">
-							<div class="input-group date">
-								<div class="input-group-addon">
-									<i class="fa fa-calendar"></i>
-								</div>
-								<input type="text" name="xmulai" class="form-control pull-right" id="datepicker" required>
+							<div class='input-group date' id='datetimepicker1'>
+								<input type='text' name="xmulai" class="form-control" required />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</span>
 							</div>
 						</div>
 						<!-- /.input group -->
@@ -162,11 +162,11 @@ foreach ($data->result_array() as $i):
 					<div class="form-group">
 						<label for="inputUserName" class="col-sm-4 control-label">Selesai</label>
 						<div class="col-sm-7">
-							<div class="input-group date">
-								<div class="input-group-addon">
-									<i class="fa fa-calendar"></i>
-								</div>
-								<input type="text" name="xselesai" class="form-control pull-right" id="datepicker2" required>
+							<div class='input-group date' id='datetimepicker2'>
+								<input type='text' name="xselesai" class="form-control" required />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</span>
 							</div>
 						</div>
 						<!-- /.input group -->
@@ -179,9 +179,10 @@ foreach ($data->result_array() as $i):
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputUserName" class="col-sm-4 control-label">Waktu</label>
+						<label for="inputUserName" class="col-sm-4 control-label">Color</label>
 						<div class="col-sm-7">
-							<input type="text" name="xwaktu" class="form-control" id="inputUserName" placeholder="Contoh: 10.30-11.00 WIB" required>
+							<input id="color" name="xcolor" type="text" class="form-control input-md" readonly="readonly" required />
+							<span class="help-block">Click to pick a color</span>
 						</div>
 					</div>
 
@@ -210,95 +211,96 @@ foreach ($data->result_array() as $i):
 	$agenda_mulai = $i['startdate'];
 	$agenda_selesai = $i['enddate'];
 	$agenda_tempat = $i['tempat'];
-	$agenda_waktu = $i['waktu'];
+	$agenda_color = $i['color'];
 	$agenda_keterangan = $i['ket'];
 	$agenda_author = $i['userid'];
 	$tangal = $i['tanggal'];
 	?>
-		<!--Modal Edit Pengguna-->
-		<div class="modal fade" id="ModalEdit<?php echo $agenda_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-						<h4 class="modal-title" id="myModalLabel">Edit Agenda</h4>
-					</div>
-					<form class="form-horizontal" action="<?php echo base_url() . 'admin/agenda/update_agenda' ?>" method="post" enctype="multipart/form-data">
-						<div class="modal-body">
+																													<!--Modal Edit Pengguna-->
+																													<div class="modal fade" id="ModalEdit<?php echo $agenda_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																														<div class="modal-dialog" role="document">
+																															<div class="modal-content">
+																																<div class="modal-header">
+																																	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+																																	<h4 class="modal-title" id="myModalLabel">Edit Agenda</h4>
+																																</div>
+																																<form class="form-horizontal" action="<?php echo base_url() . 'admin/agenda/update_agenda' ?>" method="post" enctype="multipart/form-data">
+																																	<div class="modal-body">
 
-							<div class="form-group">
-								<label for="inputUserName" class="col-sm-4 control-label">Nama Agenda</label>
-								<div class="col-sm-7">
-									<input type="hidden" name="kode" value="<?php echo $agenda_id; ?>">
-									<input type="text" name="xnama_agenda" class="form-control" value="<?php echo $agenda_nama; ?>" id="inputUserName" placeholder="Nama Agenda" required>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="inputUserName" class="col-sm-4 control-label">Deskripsi</label>
-								<div class="col-sm-7">
-									<textarea class="form-control" rows="3" name="xdeskripsi" placeholder="Deskripsi ..." required><?php echo $agenda_deskripsi; ?></textarea>
-								</div>
-							</div>
+																																		<div class="form-group">
+																																			<label for="inputUserName" class="col-sm-4 control-label">Nama Agenda</label>
+																																			<div class="col-sm-7">
+																																				<input type="hidden" name="kode" value="<?php echo $agenda_id; ?>">
+																																				<input type="text" name="xnama_agenda" class="form-control" value="<?php echo $agenda_nama; ?>" id="inputUserName" placeholder="Nama Agenda" required>
+																																			</div>
+																																		</div>
+																																		<div class="form-group">
+																																			<label for="inputUserName" class="col-sm-4 control-label">Deskripsi</label>
+																																			<div class="col-sm-7">
+																																				<textarea class="form-control" rows="3" name="xdeskripsi" placeholder="Deskripsi ..." required><?php echo $agenda_deskripsi; ?></textarea>
+																																			</div>
+																																		</div>
 
-							<div class="form-group">
-								<label for="inputUserName" class="col-sm-4 control-label">Mulai</label>
-								<div class="col-sm-7">
-									<div class="input-group date">
-										<div class="input-group-addon">
-											<i class="fa fa-calendar"></i>
-										</div>
-										<input type="text" name="xmulai" value="<?php echo $agenda_mulai; ?>" class="form-control pull-right datepicker3" required>
-									</div>
-								</div>
-								<!-- /.input group -->
-							</div>
-							<!-- /.form group -->
+																																		<div class="form-group">
+																																			<label for="inputUserName" class="col-sm-4 control-label">Mulai</label>
+																																			<div class="col-sm-7">
+																																				<div class='input-group date' id='datetimepicker3'>
+																																					<input type='text' name="xmulai" value="<?php echo $agenda_mulai; ?>" class="form-control" required />
+																																					<span class="input-group-addon">
+																																						<span class="glyphicon glyphicon-calendar"></span>
+																																					</span>
+																																				</div>
+																																			</div>
+																																			<!-- /.input group -->
+																																		</div>
+																																		<!-- /.form group -->
 
-							<!-- Date range -->
-							<div class="form-group">
-								<label for="inputUserName" class="col-sm-4 control-label">Selesai</label>
-								<div class="col-sm-7">
-									<div class="input-group date">
-										<div class="input-group-addon">
-											<i class="fa fa-calendar"></i>
-										</div>
-										<input type="text" name="xselesai" value="<?php echo $agenda_selesai; ?>" class="form-control pull-right datepicker4" required>
-									</div>
-								</div>
-								<!-- /.input group -->
-							</div>
-							<!-- /.form group -->
-							<div class="form-group">
-								<label for="inputUserName" class="col-sm-4 control-label">Tempat</label>
-								<div class="col-sm-7">
-									<input type="text" name="xtempat" class="form-control" value="<?php echo $agenda_tempat; ?>"  id="inputUserName" placeholder="Tempat" required>
-								</div>
-							</div>
+																																		<!-- Date range -->
+																																		<div class="form-group">
+																																			<label for="inputUserName" class="col-sm-4 control-label">Selesai</label>
+																																			<div class="col-sm-7">
+																																				<div class='input-group date' id='datetimepicker4'>
+																																					<input type='text' name="xselesai" value="<?php echo $agenda_selesai; ?>" class="form-control" required />
+																																					<span class="input-group-addon">
+																																						<span class="glyphicon glyphicon-calendar"></span>
+																																					</span>
+																																				</div>
+																																			</div>
+																																			<!-- /.input group -->
+																																		</div>
+																																		<!-- /.form group -->
+																																		<div class="form-group">
+																																			<label for="inputUserName" class="col-sm-4 control-label">Tempat</label>
+																																			<div class="col-sm-7">
+																																				<input type="text" name="xtempat" class="form-control" value="<?php echo $agenda_tempat; ?>"  id="inputUserName" placeholder="Tempat" required>
+																																			</div>
+																																		</div>
 
-							<div class="form-group">
-								<label for="inputUserName" class="col-sm-4 control-label">Waktu</label>
-								<div class="col-sm-7">
-									<input type="text" name="xwaktu" class="form-control" value="<?php echo $agenda_waktu; ?>" id="inputUserName" placeholder="Contoh: 10.30-11.00 WIB" required>
-								</div>
-							</div>
+																																		<div class="form-group">
+																																			<label for="inputUserName" class="col-sm-4 control-label">color</label>
+																																			<div class="col-sm-7">
+																																				<input id="color2" name="xcolor" type="text" class="form-control input-md" readonly="readonly" value="<?php echo $agenda_color; ?>" required/>
+																																				<span class="help-block">Click to pick a color</span>
+																																			</div>
+																																		</div>
 
-							<div class="form-group">
-								<label for="inputUserName" class="col-sm-4 control-label">Keterangan</label>
-								<div class="col-sm-7">
-									<textarea class="form-control" name="xketerangan" rows="2" placeholder="Keterangan ..."><?php echo $agenda_keterangan; ?></textarea>
-								</div>
-							</div>
+																																		<div class="form-group">
+																																			<label for="inputUserName" class="col-sm-4 control-label">Keterangan</label>
+																																			<div class="col-sm-7">
+																																				<textarea class="form-control" name="xketerangan" rows="2" placeholder="Keterangan ..."><?php echo $agenda_keterangan; ?></textarea>
+																																			</div>
+																																		</div>
 
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary btn-flat" id="simpan">Update</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	<?php endforeach;?>
+																																	</div>
+																																	<div class="modal-footer">
+																																		<button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+																																		<button type="submit" class="btn btn-primary btn-flat" id="simpan">Update</button>
+																																	</div>
+																																</form>
+																															</div>
+																														</div>
+																													</div>
+																												<?php endforeach;?>
 
 <?php foreach ($data->result_array() as $i):
 	$agenda_id = $i['id'];
@@ -307,34 +309,34 @@ foreach ($data->result_array() as $i):
 	$agenda_mulai = $i['startdate'];
 	$agenda_selesai = $i['enddate'];
 	$agenda_tempat = $i['tempat'];
-	$agenda_waktu = $i['waktu'];
+	$agenda_color = $i['color'];
 	$agenda_keterangan = $i['ket'];
 	$agenda_author = $i['userid'];
 	$tangal = $i['tanggal'];
 	?>
-		<!--Modal Hapus Pengguna-->
-		<div class="modal fade" id="ModalHapus<?php echo $agenda_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-						<h4 class="modal-title" id="myModalLabel">Hapus Agenda</h4>
-					</div>
-					<form class="form-horizontal" action="<?php echo base_url() . 'admin/agenda/hapus_agenda' ?>" method="post" enctype="multipart/form-data">
-						<div class="modal-body">
-							<input type="hidden" name="kode" value="<?php echo $agenda_id; ?>"/>
-							<p>Apakah Anda yakin mau menghapus Pengguna <b><?php echo $agenda_nama; ?></b> ?</p>
+																													<!--Modal Hapus Pengguna-->
+																													<div class="modal fade" id="ModalHapus<?php echo $agenda_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																														<div class="modal-dialog" role="document">
+																															<div class="modal-content">
+																																<div class="modal-header">
+																																	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+																																	<h4 class="modal-title" id="myModalLabel">Hapus Agenda</h4>
+																																</div>
+																																<form class="form-horizontal" action="<?php echo base_url() . 'admin/agenda/hapus_agenda' ?>" method="post" enctype="multipart/form-data">
+																																	<div class="modal-body">
+																																		<input type="hidden" name="kode" value="<?php echo $agenda_id; ?>"/>
+																																		<p>Apakah Anda yakin mau menghapus Pengguna <b><?php echo $agenda_nama; ?></b> ?</p>
 
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	<?php endforeach;?>
+																																	</div>
+																																	<div class="modal-footer">
+																																		<button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+																																		<button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
+																																	</div>
+																																</form>
+																															</div>
+																														</div>
+																													</div>
+																												<?php endforeach;?>
 
 
 
@@ -348,19 +350,39 @@ foreach ($data->result_array() as $i):
 <script src="<?php echo base_url() . 'assets/plugins/datatables/dataTables.bootstrap.min.js' ?>"></script>
 <!-- SlimScroll -->
 <script src="<?php echo base_url() . 'assets/plugins/slimScroll/jquery.slimscroll.min.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/plugins/datepicker/bootstrap-datepicker.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/plugins/timepicker/bootstrap-timepicker.min.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/plugins/daterangepicker/daterangepicker.js' ?>"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url() . 'assets/dist/js/demo.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/datetimepicker/js/moment-with-locales.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js' ?>"></script>
+
+
 <script type="text/javascript" src="<?php echo base_url() . 'assets/plugins/toast/jquery.toast.min.js' ?>"></script>
 <!-- page script -->
 <script>
 	$(function () {
+		$('#color').colorpicker();
+		$('#color2').colorpicker();
+		$('.input-group.date').datetimepicker({
+			locale: 'id',
+			format:'YYYY-MM-DD HH:mm:ss',
+		});
+		$('.input-group.date').datetimepicker({
+			locale: 'id',
+			format:'YYYY-MM-DD HH:mm:ss',
+		});
+		$('.input-group.date').datetimepicker({
+			locale: 'id',
+			format:'YYYY-MM-DD HH:mm:ss',
+		});
+		$('.input-group.date').datetimepicker({
+			locale: 'id',
+			format:'YYYY-MM-DD HH:mm:ss',
+		});
 		$("#example1").DataTable();
 		$('#example2').DataTable({
 			"paging": true,
@@ -369,26 +391,6 @@ foreach ($data->result_array() as $i):
 			"ordering": true,
 			"info": true,
 			"autoWidth": false
-		});
-
-		$('#datepicker').datepicker({
-			autoclose: true,
-			format: 'yyyy-mm-dd'
-		});
-		$('#datepicker2').datepicker({
-			autoclose: true,
-			format: 'yyyy-mm-dd'
-		});
-		$('.datepicker3').datepicker({
-			autoclose: true,
-			format: 'yyyy-mm-dd'
-		});
-		$('.datepicker4').datepicker({
-			autoclose: true,
-			format: 'yyyy-mm-dd'
-		});
-		$(".timepicker").timepicker({
-			showInputs: true
 		});
 
 	});

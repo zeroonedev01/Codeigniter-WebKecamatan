@@ -18,6 +18,8 @@ class Beranda extends CI_Controller {
 		$this->load->model('m_galeri');
 		$this->load->model('m_identitas');
 		$this->load->model('m_socmed');
+		$this->load->model('m_instagram');
+		$this->load->model('m_identitas');
 
 		$this->m_pengunjung->count_visitor();
 	}
@@ -32,6 +34,8 @@ class Beranda extends CI_Controller {
 		$x['galeri'] = $this->m_galeri->get_galeri_home();
 		$x['identitas'] = $this->m_identitas->get_all_identitas();
 		$x['socmed'] = $this->m_socmed->get_all_socmed();
+		$x['ig'] = $this->m_instagram->get_all_instagram();
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 
 		$this->load->view('beranda', $x);
 	}

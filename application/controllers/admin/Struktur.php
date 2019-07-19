@@ -12,12 +12,14 @@ class Struktur extends CI_Controller {
 			$url = base_url('administrator');
 			redirect($url);
 		};
+		$this->load->model('m_identitas');
 		$this->load->model('m_statis');
 		$this->load->library('upload');
 	}
 
 	function index() {
 		$x['data'] = $this->m_statis->get_all_struktur();
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$this->load->view('admin/v_struktur', $x);
 	}
 

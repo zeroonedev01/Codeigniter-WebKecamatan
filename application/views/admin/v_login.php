@@ -3,9 +3,12 @@
 <head>
   <title>Login Kalimanah</title>
   <meta charset="UTF-8">
+  <meta name="keyword" content="Kecamatan Kalimanah, Kalimanah, Portal Kecamatan Kalimanah, Web Kecamatan Kalimanah">
+  <meta name="description" content="Portal Resmi Kecamatan Kalimanah">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-  <link rel="icon" type="image/png" href="<?php echo base_url() . 'assetss/favicon/favicon.ico' ?>"/>
+ <?php $iden = $iden->row_array()?>
+  <link rel="icon" href="<?=base_url('assetss/favicon/') . $iden['favicon']?>">
 <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assetss/vendor/bootstrap/css/bootstrap.min.css ' ?>">
 <!--===============================================================================================-->
@@ -26,6 +29,12 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assetss/css/util.css' ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assetss/css/main.css' ?>">
 <!--===============================================================================================-->
+<style type="text/css">
+  html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+</style>
 </head>
 <body>
   <div>

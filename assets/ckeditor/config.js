@@ -8,10 +8,10 @@
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	
-	config.filebrowserBrowseUrl = 'http://192.168.100.34:8080/MasterKecamatan/assets/kcfinder/browse.php?opener=ckeditor&type=files';
-	config.filebrowserImageBrowseUrl = 'http://192.168.100.34:8080/MasterKecamatan/assets/kcfinder/browse.php?opener=ckeditor&type=images';
-	config.filebrowserFlashBrowseUrl = 'http://192.168.100.34:8080/MasterKecamatan/assets/kcfinder/browse.php?opener=ckeditor&type=flash';
-	config.filebrowserUploadUrl = 'http://192.168.100.34:8080/MasterKecamatan/assets/kcfinder/upload.php?opener=ckeditor&type=files';
-	config.filebrowserImageUploadUrl = 'http://192.168.100.34:8080/MasterKecamatan/assets/kcfinder/upload.php?opener=ckeditor&type=images';
-	config.filebrowserFlashUploadUrl = 'http://192.168.100.34:8080/MasterKecamatan/assets/kcfinder/upload.php?opener=ckeditor&type=flash';
+	// config.filebrowserBrowseUrl = 'http://localhost:8080/MasterKecamatan/assets/kcfinder/browse.phpz?opener=ckeditor&type=files';
+	// config.filebrowserImageBrowseUrl = 'http://localhost:8080/MasterKecamatan/assets/kcfinder/browse.php?opener=ckeditor&type=images';
+	// config.filebrowserFlashBrowseUrl = 'http://localhost:8080/MasterKecamatan/assets/kcfinder/browse.php?opener=ckeditor&type=flash';
+	// config.filebrowserUploadUrl = 'http://localhost:8080/MasterKecamatan/assets/kcfinder/upload.php?opener=ckeditor&type=files';
+	// config.filebrowserImageUploadUrl = 'http://localhost:8080/MasterKecamatan/assets/kcfinder/upload.php?opener=ckeditor&type=images';
+	// config.filebrowserFlashUploadUrl = 'http://localhost:8080/MasterKecamatan/assets/kcfinder/upload.php?opener=ckeditor&type=flash';
 };

@@ -6,11 +6,13 @@ class Kategori extends CI_Controller {
 			$url = base_url('administrator');
 			redirect($url);
 		};
+		$this->load->model('m_identitas');
 		$this->load->model('m_kategori');
 		$this->load->library('upload');
 	}
 
 	function index() {
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$x['data'] = $this->m_kategori->get_all_kategori();
 		$this->load->view('admin/v_kategori', $x);
 	}

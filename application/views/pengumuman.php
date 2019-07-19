@@ -24,7 +24,7 @@ $this->load->view('template/menu')?>
               <p> <?php echo limit_words($row->isi, 15) . '...dff'; ?></p>
               <!-- Post Meta -->
               <div class="post-meta">
-                <p><i class="fa fa-calendar"></i> Posted  <?php echo $row->tanggal; ?></p>
+                <p><i class="fa fa-calendar"></i> Posted  <?php echo $row->tanggal1; ?></p>
               </div>
             </div>
           </div>

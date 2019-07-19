@@ -12,12 +12,16 @@ class Kontak extends CI_Controller {
 		$this->load->model('m_identitas');
 		$this->load->model('m_waktu');
 		$this->load->model('m_pengunjung');
+		$this->load->model('m_instagram');
+		$this->load->model('m_identitas');
 		$this->m_pengunjung->count_visitor();
 	}
 	function index() {
 		$x['identitas'] = $this->m_identitas->get_all_identitas();
 
 		$x['waktu'] = $this->m_waktu->get_all_waktu();
+		$x['ig'] = $this->m_instagram->get_all_instagram();
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$this->load->view('kontak', $x);
 	}
 

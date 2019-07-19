@@ -13,6 +13,8 @@ class Pengumuman extends CI_Controller {
 		$this->load->model('m_pengumuman');
 		$this->load->model('m_agenda');
 		$this->load->model('m_pengunjung');
+		$this->load->model('m_instagram');
+		$this->load->model('m_identitas');
 		$this->m_pengunjung->count_visitor();
 	}
 	function index() {
@@ -56,6 +58,8 @@ class Pengumuman extends CI_Controller {
 		$x['pengumumanterbaru'] = $this->m_pengumuman->get_pengumuman_terbaru();
 		$x['populer'] = $this->m_berita->get_berita_populer();
 		$x['beritaterbaru'] = $this->m_berita->get_berita_terbaru();
+		$x['ig'] = $this->m_instagram->get_all_instagram();
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$this->load->view('pengumuman', $x);
 	}
 	function detail($slugs) {
@@ -70,7 +74,7 @@ class Pengumuman extends CI_Controller {
 			$x['id'] = $row['id'];
 			$x['judul'] = $row['judul'];
 			$x['isi'] = $row['isi'];
-			$x['tanggal'] = $row['tanggal'];
+			$x['tanggal'] = $row['tanggal1'];
 			$x['author'] = $row['author'];
 			$x['slug'] = $row['slug'];
 			$x['agendaterbaru'] = $this->m_agenda->get_agenda_terbaru();
@@ -78,6 +82,8 @@ class Pengumuman extends CI_Controller {
 			$x['pengumumanterbaru'] = $this->m_pengumuman->get_pengumuman_terbaru();
 			$x['populer'] = $this->m_berita->get_berita_populer();
 			$x['beritaterbaru'] = $this->m_berita->get_berita_terbaru();
+			$x['ig'] = $this->m_instagram->get_all_instagram();
+			$x['iden'] = $this->m_identitas->get_all_identitas();
 			$this->load->view('v_pengumuman', $x);
 		} else {
 			redirect('pengumuman');

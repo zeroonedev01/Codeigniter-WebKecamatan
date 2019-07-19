@@ -10,59 +10,31 @@ $this->load->view('template/menu')?>
       <!-- Blog Entries Column -->
       <div class="col-md-8">
         <h3 class="p-title">Agenda <span style="color:#DC3545;"></span></h3>
-        <?php foreach ($data->result() as $row): ?>
-          <div class="single-blog-post post-style-4  align-items-center">
-            <!-- Post Thumbnail -->
-            <div class="row">hg
-              <div class="col-md-4">
-              <div class="event1-date">
-                <h4><?php echo date("d", strtotime($row->startdate)); ?></h4> <span><?php echo date("M Y", strtotime($row->startdate)); ?></span>
-              </div>
-              <span class="event1-time"><?php echo $row->waktu; ?></span>
-            </div>
-            <div class="col-md-8">
-              <!-- Post Content -->
-              <div class="post-content">
-                <a href="<?php echo site_url('agenda/vw:' . $row->slug); ?>" class="headline">
-                  <h4><?php echo $row->nama ?></h4>
+       <!--  <div class="text-right">
+          <div class="form-group" style="background: #f0f0f0">
 
-                </a>
-                <p><?php echo limit_words($row->deskripsi, 15) . '...'; ?></p>
-                <!-- Post Meta -->
-                <div class="post-meta">
-                <p><i class="fa fa-paper-plane-o"></i> Posted <?php echo $row->tanggal ?>  </p>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <?php endforeach;?>
+            <label class="d-inline-block">View Mode</label>
 
-      <!-- Pagination -->
-<!--       <ul class="pagination justify-content-center mb-4">
-        <li class="page-item">
-          <a class="page-link" href="#">&larr; Older</a>
-        </li>
-        <li class="page-item disabled">
-          <a class="page-link" href="#">Newer &rarr;</a>
-        </li>
-      </ul> -->
+            <select name="viewmode" class="form-control form-control-sm d-inline-block" style="width: auto;" id="viewmode">
+             <option value="listview">List card</option>
+             <option value="get_events">Kalender</option>
+           </select>
 
-        <?php
-// error_reporting(0);
-echo $page; ?>
+         </div>
+       </div> -->
+       <div id="calendar"></div>
+       <!-- <div id="tonton"></div> -->
 
+     </div>
 
-    </div>
+     <!-- Sidebar Widgets Column -->
+     <div class="col-md-4">
+       <?php $this->load->view('template/widget')?>
 
-    <!-- Sidebar Widgets Column -->
-    <div class="col-md-4">
-     <?php $this->load->view('template/widget')?>
+     </div>
 
    </div>
-
  </div>
-</div>
 
 </div>
 <br>

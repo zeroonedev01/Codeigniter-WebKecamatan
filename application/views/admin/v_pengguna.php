@@ -75,17 +75,17 @@ $this->load->view('admin/v_menu');
 	$pengguna_level = $i['level'];
 	$pengguna_photo = $i['photo'];
 	?>
-		                   <tr>
-		                    <td><img width="40" height="40" class="img-circle" src="<?php echo base_url() . 'assets/images/' . $pengguna_photo; ?>"></td>
-		                    <td><?php echo $pengguna_nama; ?></td>
-		                    <td><?php echo $pengguna_email; ?></td>
+									                   <tr>
+									                    <td><img width="40" height="40" class="img-circle" src="<?php echo base_url() . 'assets/images/' . $pengguna_photo; ?>"></td>
+									                    <td><?php echo $pengguna_nama; ?></td>
+									                    <td><?php echo $pengguna_email; ?></td>
 
-		                    <td><?php echo $pengguna_jenkel; ?>
-		                    <td><?php echo $pengguna_password; ?></td>
-		                    <td><?php echo $pengguna_nohp; ?></td>
-		                    <?php if ($pengguna_level == '1'): ?>
-		                      <td>Administrator</td>
-		                      <?php else: ?>
+									                    <td><?php echo $pengguna_jenkel; ?>
+									                    <td><?php echo $pengguna_password; ?></td>
+									                    <td><?php echo $pengguna_nohp; ?></td>
+									                    <?php if ($pengguna_level == '1'): ?>
+									                      <td>Administrator</td>
+									                      <?php else: ?>
                         <td>Author</td>
                       <?php endif;?>
                       <td style="text-align:right;">
@@ -212,43 +212,43 @@ $this->load->view('admin/v_menu');
 	$pengguna_level = $i['level'];
 	$pengguna_photo = $i['photo'];
 	?>
-		  <!--Modal Edit Pengguna-->
-		  <div class="modal fade" id="ModalEdit<?php echo $pengguna_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		    <div class="modal-dialog" role="document">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-		          <h4 class="modal-title" id="myModalLabel">Edit Pengguna</h4>
-		        </div>
-		        <form class="form-horizontal" action="<?php echo base_url() . 'admin/pengguna/update_pengguna' ?>" method="post" enctype="multipart/form-data">
-		          <div class="modal-body">
+									  <!--Modal Edit Pengguna-->
+									  <div class="modal fade" id="ModalEdit<?php echo $pengguna_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									    <div class="modal-dialog" role="document">
+									      <div class="modal-content">
+									        <div class="modal-header">
+									          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+									          <h4 class="modal-title" id="myModalLabel">Edit Pengguna</h4>
+									        </div>
+									        <form class="form-horizontal" action="<?php echo base_url() . 'admin/pengguna/update_pengguna' ?>" method="post" enctype="multipart/form-data">
+									          <div class="modal-body">
 
-		            <div class="form-group">
-		              <label for="inputUserName" class="col-sm-4 control-label">Nama</label>
-		              <div class="col-sm-7">
-		               <input type="hidden" name="kode" value="<?php echo $pengguna_id; ?>"/>
-		               <input type="text" name="xnama" class="form-control" id="inputUserName" value="<?php echo $pengguna_nama; ?>" placeholder="Nama Lengkap" required>
-		             </div>
-		           </div>
-		           <div class="form-group">
-		            <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
-		            <div class="col-sm-7">
-		              <input type="email" name="xemail" rm-control" value="<?php echo $pengguna_email; ?>" id="inputEmail3" placeholder="Email" required>
-		            </div>
-		          </div>
-		          <div class="form-group">
-		            <label for="inputUserName" class="col-sm-4 control-label">Jenis Kelamin</label>
-		            <div class="col-sm-7">
-		              <?php if ($pengguna_jenkel == 'Laki-Laki'): ?>
-		               <div class="radio radio-info radio-inline">
-		                <input type="radio" id="inlineRadio1" value="L" name="xjenkel" checked>
-		                <label for="inlineRadio1"> Laki-Laki </label>
-		              </div>
-		              <div class="radio radio-info radio-inline">
-		                <input type="radio" id="inlineRadio1" value="P" name="xjenkel">
-		                <label for="inlineRadio2"> Perempuan </label>
-		              </div>
-		              <?php else: ?>
+									            <div class="form-group">
+									              <label for="inputUserName" class="col-sm-4 control-label">Nama</label>
+									              <div class="col-sm-7">
+									               <input type="hidden" name="kode" value="<?php echo $pengguna_id; ?>"/>
+									               <input type="text" name="xnama" class="form-control" id="inputUserName" value="<?php echo $pengguna_nama; ?>" placeholder="Nama Lengkap" required>
+									             </div>
+									           </div>
+									           <div class="form-group">
+									            <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
+									            <div class="col-sm-7">
+									              <input type="email" name="xemail" rm-control" value="<?php echo $pengguna_email; ?>" id="inputEmail3" placeholder="Email" required>
+									            </div>
+									          </div>
+									          <div class="form-group">
+									            <label for="inputUserName" class="col-sm-4 control-label">Jenis Kelamin</label>
+									            <div class="col-sm-7">
+									              <?php if ($pengguna_jenkel == 'Laki-Laki'): ?>
+									               <div class="radio radio-info radio-inline">
+									                <input type="radio" id="inlineRadio1" value="L" name="xjenkel" checked>
+									                <label for="inlineRadio1"> Laki-Laki </label>
+									              </div>
+									              <div class="radio radio-info radio-inline">
+									                <input type="radio" id="inlineRadio1" value="P" name="xjenkel">
+									                <label for="inlineRadio2"> Perempuan </label>
+									              </div>
+									              <?php else: ?>
                <div class="radio radio-info radio-inline">
                 <input type="radio" id="inlineRadio1" value="L" name="xjenkel">
                 <label for="inlineRadio1"> Laki-Laki </label>
@@ -302,6 +302,7 @@ $this->load->view('admin/v_menu');
           <label for="inputUserName" class="col-sm-4 control-label">Photo</label>
           <div class="col-sm-7">
             <input type="file" name="filefoto"/>
+             <input type="hidden" value="<?php echo $pengguna_photo; ?>" name="gambar">
           </div>
         </div>
 
@@ -328,29 +329,30 @@ $this->load->view('admin/v_menu');
 	$pengguna_level = $i['level'];
 	$pengguna_photo = $i['photo'];
 	?>
-		 <!--Modal Hapus Pengguna-->
-		 <div class="modal fade" id="ModalHapus<?php echo $pengguna_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-		        <h4 class="modal-title" id="myModalLabel">Hapus Pengguna</h4>
-		      </div>
-		      <form class="form-horizontal" action="<?php echo base_url() . 'admin/pengguna/hapus_pengguna' ?>" method="post" enctype="multipart/form-data">
-		        <div class="modal-body">
-		         <input type="hidden" name="kode" value="<?php echo $pengguna_id; ?>"/>
-		         <p>Apakah Anda yakin mau menghapus Pengguna <b><?php echo $pengguna_nama; ?></b> ?</p>
+									 <!--Modal Hapus Pengguna-->
+									 <div class="modal fade" id="ModalHapus<?php echo $pengguna_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+									        <h4 class="modal-title" id="myModalLabel">Hapus Pengguna</h4>
+									      </div>
+									      <form class="form-horizontal" action="<?php echo base_url() . 'admin/pengguna/hapus_pengguna' ?>" method="post" enctype="multipart/form-data">
+									        <div class="modal-body">
+									         <input type="hidden" name="kode" value="<?php echo $pengguna_id; ?>"/>
+			                     <input type="hidden" value="<?php echo $pengguna_photo; ?>" name="gambar">
+									         <p>Apakah Anda yakin mau menghapus Pengguna <b><?php echo $pengguna_nama; ?></b> ?</p>
 
-		       </div>
-		       <div class="modal-footer">
-		        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-		        <button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
-		      </div>
-		    </form>
-		  </div>
-		</div>
-		</div>
-		<?php endforeach;?>
+									       </div>
+									       <div class="modal-footer">
+									        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+									        <button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
+									      </div>
+									    </form>
+									  </div>
+									</div>
+									</div>
+									<?php endforeach;?>
 
 <!--Modal Reset Password-->
 <div class="modal fade" id="ModalResetPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -6,10 +6,12 @@ class Komentar extends CI_Controller {
 			$url = base_url('administrator');
 			redirect($url);
 		};
+		$this->load->model('m_identitas');
 		$this->load->model('m_kategori');
 	}
 
 	function index() {
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$x['data'] = $this->db->query("SELECT tb_komentar.*,tb_berita.judul,tb_berita.slug FROM tb_komentar JOIN tb_berita ON beritaid=tb_berita.id ORDER BY tb_komentar.id DESC");
 		$this->load->view('admin/v_komentar', $x);
 	}

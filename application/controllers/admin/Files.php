@@ -6,6 +6,7 @@ class Files extends CI_Controller {
 			$url = base_url('administrator');
 			redirect($url);
 		};
+		$this->load->model('m_identitas');
 		$this->load->model('m_files');
 		$this->load->model('m_pengguna');
 		$this->load->library('upload');
@@ -13,7 +14,7 @@ class Files extends CI_Controller {
 	}
 
 	function index() {
-
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$x['data'] = $this->m_files->get_all_files();
 		$this->load->view('admin/v_files', $x);
 	}

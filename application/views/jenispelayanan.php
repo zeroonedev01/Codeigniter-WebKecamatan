@@ -17,28 +17,28 @@ $x = 0;
 foreach ($jp->result_array() as $i):
 	$x++;
 	?>
-						         <button class="tablinks" onclick="openCity(event, '<?php echo $i["id"] ?>')" id="<?php if ($x == 1) {
+				         <button class="tablinks" onclick="openCity(event, '<?php echo $i["id"] ?>')" id="<?php if ($x == 1) {
 		echo 'defaultOpen';}?>"><?php echo $i['judul'] ?></button>
-						      <?php endforeach;?>
-    </div>
-<?php
+				        <?php endforeach;?>
+      </div>
+      <?php
 foreach ($jp->result_array() as $x):
 ?>
-    <div id="<?php echo $x['id'] ?>" class="tabcontent">
-      <h3><?php echo $x['judul'] ?></h3>
-      <p><?php echo $x['isi'] ?></p>
+        <div id="<?php echo $x['id'] ?>" class="tabcontent">
+          <h3><?php echo $x['judul'] ?></h3>
+          <p><?php echo $x['isi'] ?></p>
+        </div>
+      <?php endforeach;?>
+      <hr>
     </div>
-  <?php endforeach;?>
-    <hr>
-  </div>
 
-  <!-- Sidebar Widgets Column -->
-  <div class="col-md-4">
-   <?php $this->load->view('template/widget')?>
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
+     <?php $this->load->view('template/widget')?>
+
+   </div>
 
  </div>
-
-</div>
 </div>
 
 </div>

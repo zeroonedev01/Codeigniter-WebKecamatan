@@ -72,18 +72,18 @@ foreach ($data->result_array() as $i):
 	$icon = $i['icon'];
 
 	?>
-	                     <tr>
-	                      <td><?php echo $id; ?></td>
-	                      <td><?php echo $nama; ?></td>
-	                      <td><?php echo $url; ?></td>
-	                      <td><?php echo $icon; ?></td>
+								                     <tr>
+								                      <td><?php echo $no; ?></td>
+								                      <td><?php echo $nama; ?></td>
+								                      <td><?php echo $url; ?></td>
+								                      <td><?php echo $icon; ?></td>
 
-	                      <td style="text-align:right;">
-	                       <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id; ?>"><span class="fa fa-pencil"></span></a>
-	                       <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id; ?>"><span class="fa fa-trash"></span></a>
-	                     </td>
-	                   </tr>
-	                 <?php endforeach;?>
+								                      <td style="text-align:right;">
+								                       <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id; ?>"><span class="fa fa-pencil"></span></a>
+								                       <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id; ?>"><span class="fa fa-trash"></span></a>
+								                     </td>
+								                   </tr>
+								                 <?php endforeach;?>
                </tbody>
              </table>
            </div>
@@ -122,14 +122,14 @@ foreach ($data->result_array() as $i):
               <div class="form-group">
                 <label for="inputUserName" class="col-sm-4 control-label">Nama</label>
                 <div class="col-sm-7">
-                  <input type="text" name="xnama" class="form-control" id="inputUserName" placeholder="ex:facebook.com" required>
+                  <input type="text" name="xnama" class="form-control" id="inputUserName" placeholder="ex:facebook" required>
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputUserName" class="col-sm-4 control-label">URL</label>
                 <div class="col-sm-7">
-                  <input type="text" name="xurl" class="form-control" id="inputUserName" placeholder="ex:www.facebook.com/author" required>
+                  <input type="text" name="xurl" class="form-control" id="inputUserName" placeholder="ex:https://www.facebook.com/author" required>
                 </div>
               </div>
               <div class="form-group">
@@ -156,45 +156,45 @@ foreach ($data->result_array() as $i):
 	$url = $i['url'];
 	$icon = $i['icon'];
 	?>
-	     <!--Modal Edit-->
-	     <div class="modal fade" id="ModalEdit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	      <div class="modal-dialog" role="document">
-	        <div class="modal-content">
-	          <div class="modal-header">
-	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-	            <h4 class="modal-title" id="myModalLabel">Edit socmed</h4>
-	          </div>
-	          <form class="form-horizontal" action="<?php echo base_url() . 'admin/socmed/update_socmed' ?>" method="post" enctype="multipart/form-data">
-	            <div class="modal-body">
-	              <div class="form-group">
-	                <label for="inputUserName" class="col-sm-4 control-label">Nama</label>
-	                <div class="col-sm-7">
-	                  <input type="hidden" name="kode" value="<?php echo $id; ?>">
-	                  <input type="text" name="xnama" class="form-control" value="<?php echo $nama; ?>" id="inputUserName" placeholder="ex:facebook" required>
-	                </div>
-	              </div>
-	              <div class="form-group">
-	                <label for="inputUserName" class="col-sm-4 control-label">URL</label>
-	                <div class="col-sm-7">
-	                  <input type="text" name="xurl" class="form-control" value="<?php echo $url; ?>" id="inputUserName" placeholder="ex:www.facebook.com/wkwkw" required>
-	                </div>
-	              </div>
-	              <div class="form-group">
-	               <label for="inputUserName" class="col-sm-4 control-label">Icon Style</label>
-	               <div class="col-sm-7">
-	                 <input type="text" name="xicon" class="form-control" value="<?php echo $icon; ?>" id="inputUserName" placeholder="ex:fa fa-facebook" required>
-	               </div>
-	             </div>
-	           </div>
-	           <div class="modal-footer">
-	            <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-	            <button type="submit" class="btn btn-primary btn-flat" id="simpan">Update</button>
-	          </div>
-	        </form>
-	      </div>
-	    </div>
-	  </div>
-	<?php endforeach;?>
+								     <!--Modal Edit-->
+								     <div class="modal fade" id="ModalEdit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								      <div class="modal-dialog" role="document">
+								        <div class="modal-content">
+								          <div class="modal-header">
+								            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+								            <h4 class="modal-title" id="myModalLabel">Edit socmed</h4>
+								          </div>
+								          <form class="form-horizontal" action="<?php echo base_url() . 'admin/socmed/update_socmed' ?>" method="post" enctype="multipart/form-data">
+								            <div class="modal-body">
+								              <div class="form-group">
+								                <label for="inputUserName" class="col-sm-4 control-label">Nama</label>
+								                <div class="col-sm-7">
+								                  <input type="hidden" name="kode" value="<?php echo $id; ?>">
+								                  <input type="text" name="xnama" class="form-control" value="<?php echo $nama; ?>" id="inputUserName" placeholder="ex:facebook" required>
+								                </div>
+								              </div>
+								              <div class="form-group">
+								                <label for="inputUserName" class="col-sm-4 control-label">URL</label>
+								                <div class="col-sm-7">
+								                  <input type="text" name="xurl" class="form-control" value="<?php echo $url; ?>" id="inputUserName" placeholder="ex:www.facebook.com/wkwkw" required>
+								                </div>
+								              </div>
+								              <div class="form-group">
+								               <label for="inputUserName" class="col-sm-4 control-label">Icon Style</label>
+								               <div class="col-sm-7">
+								                 <input type="text" name="xicon" class="form-control" value="<?php echo $icon; ?>" id="inputUserName" placeholder="ex:fa fa-facebook" required>
+								               </div>
+								             </div>
+								           </div>
+								           <div class="modal-footer">
+								            <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+								            <button type="submit" class="btn btn-primary btn-flat" id="simpan">Update</button>
+								          </div>
+								        </form>
+								      </div>
+								    </div>
+								  </div>
+								<?php endforeach;?>
 
 <?php foreach ($data->result_array() as $i):
 	$id = $i['id'];
@@ -202,29 +202,29 @@ foreach ($data->result_array() as $i):
 	$url = $i['url'];
 	$icon = $i['icon'];
 	?>
-	 <!--Modal Hapus Pengguna-->
-	 <div class="modal fade" id="ModalHapus<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-	        <h4 class="modal-title" id="myModalLabel">Hapus socmed</h4>
-	      </div>
-	      <form class="form-horizontal" action="<?php echo base_url() . 'admin/socmed/hapus_socmed' ?>" method="post" enctype="multipart/form-data">
-	        <div class="modal-body">
-	         <input type="hidden" name="kode" value="<?php echo $id; ?>"/>
-	         <p>Apakah Anda yakin mau menghapus socmed buka <b><?php echo $nama; ?></b> ?</p>
+								 <!--Modal Hapus Pengguna-->
+								 <div class="modal fade" id="ModalHapus<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+								        <h4 class="modal-title" id="myModalLabel">Hapus socmed</h4>
+								      </div>
+								      <form class="form-horizontal" action="<?php echo base_url() . 'admin/socmed/hapus_socmed' ?>" method="post" enctype="multipart/form-data">
+								        <div class="modal-body">
+								         <input type="hidden" name="kode" value="<?php echo $id; ?>"/>
+								         <p>Apakah Anda yakin mau menghapus socmed buka <b><?php echo $nama; ?></b> ?</p>
 
-	       </div>
-	       <div class="modal-footer">
-	        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
-	      </div>
-	    </form>
-	  </div>
-	</div>
-	</div>
-	<?php endforeach;?>
+								       </div>
+								       <div class="modal-footer">
+								        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+								        <button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
+								      </div>
+								    </form>
+								  </div>
+								</div>
+								</div>
+								<?php endforeach;?>
 
 
 

@@ -1,10 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 /**
  *
  */
-
 class Berita extends CI_Controller {
 	function __construct() {
 		parent::__construct();
@@ -13,6 +11,8 @@ class Berita extends CI_Controller {
 		$this->load->model('m_pengumuman');
 		$this->load->model('m_agenda');
 		$this->load->model('m_pengunjung');
+		$this->load->model('m_instagram');
+		$this->load->model('m_identitas');
 		$this->m_pengunjung->count_visitor();
 	}
 	function index() {
@@ -56,6 +56,8 @@ class Berita extends CI_Controller {
 		$x['pengumumanterbaru'] = $this->m_pengumuman->get_pengumuman_terbaru();
 		$x['populer'] = $this->m_berita->get_berita_populer();
 		$x['beritaterbaru'] = $this->m_berita->get_berita_terbaru();
+		$x['ig'] = $this->m_instagram->get_all_instagram();
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$this->load->view('berita', $x);
 	}
 	function detail($slugs) {
@@ -82,15 +84,17 @@ class Berita extends CI_Controller {
 			$x['pengumumanterbaru'] = $this->m_pengumuman->get_pengumuman_terbaru();
 			$x['populer'] = $this->m_berita->get_berita_populer();
 			$x['beritaterbaru'] = $this->m_berita->get_berita_terbaru();
+			$x['ig'] = $this->m_instagram->get_all_instagram();
+			$x['iden'] = $this->m_identitas->get_all_identitas();
 			$this->load->view('berita_detail', $x);
 		} else {
 			redirect('berita');
 		}
 	}
 
-	function kategori() {
+	function kategori($kategori) {
 		$kategori = str_replace("-", " ", $this->uri->segment(3));
-		$query = $this->db->query("SELECT tb_berita.id, tb_berita.judul, tb_berita.tanggal, tb_berita.isi, tb_berita.tayang,tb_berita.slug,tb_berita.gambar,tb_kategori.nama as kategori ,tb_user.nama AS author, DATE_FORMAT(tanggal,'%d/%m/%Y') AS tanggal FROM tb_berita INNER JOIN tb_kategori on tb_berita.kategoriid = tb_kategori.id INNER join tb_user on tb_berita.userid = tb_user.id WHERE kategori LIKE '%$kategori%' ORDER BY tayang DESC LIMIT 5");
+		$query = $this->db->query("SELECT * from vw_berita WHERE kategori LIKE '%$kategori%' ORDER BY tayang DESC LIMIT 5");
 		if ($query->num_rows() > 0) {
 			$x['data'] = $query;
 			$x['agendaterbaru'] = $this->m_agenda->get_agenda_terbaru();
@@ -98,6 +102,8 @@ class Berita extends CI_Controller {
 			$x['pengumumanterbaru'] = $this->m_pengumuman->get_pengumuman_terbaru();
 			$x['populer'] = $this->m_berita->get_berita_populer();
 			$x['beritaterbaru'] = $this->m_berita->get_berita_terbaru();
+			$x['ig'] = $this->m_instagram->get_all_instagram();
+			$x['iden'] = $this->m_identitas->get_all_identitas();
 			$this->load->view('berita', $x);
 		} else {
 			echo $this->session->set_flashdata('msg', '<div class="alert alert-danger">Tidak Ada berita untuk kategori <b>' . $kategori . '</b></div>');
@@ -115,6 +121,9 @@ class Berita extends CI_Controller {
 			$x['pengumumanterbaru'] = $this->m_pengumuman->get_pengumuman_terbaru();
 			$x['populer'] = $this->m_berita->get_berita_populer();
 			$x['beritaterbaru'] = $this->m_berita->get_berita_terbaru();
+			$x['ig'] = $this->m_instagram->get_all_instagram();
+			$x['iden'] = $this->m_identitas->get_all_identitas();
+			$this->load->view('berita', $x);
 		} else {
 			echo $this->session->set_flashdata('msg', '<div class="alert alert-danger">Tidak dapat menemukan berita dengan kata kunci <b>' . $keyword . '</b></div>');
 			redirect('berita');

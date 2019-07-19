@@ -6,11 +6,13 @@ class Pengguna extends CI_Controller {
 			$url = base_url('administrator');
 			redirect($url);
 		};
+		$this->load->model('m_identitas');
 		$this->load->model('m_pengguna');
 		$this->load->library('upload');
 	}
 
 	function index() {
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$kode = $this->session->userdata('idadmin');
 		$x['user'] = $this->m_pengguna->get_pengguna_login($kode);
 		$x['data'] = $this->m_pengguna->get_all_pengguna();
@@ -115,6 +117,12 @@ class Pengguna extends CI_Controller {
 				$email = $this->input->post('xemail');
 				$nohp = $this->input->post('xkontak');
 				$level = $this->input->post('xlevel');
+				$images = $this->input->post('gambar');
+				$path = './assets/images/' . $images;
+				if (file_exists($path)) {
+					unlink($path);
+				}
+
 				if (empty($password) && empty($konfirm_password)) {
 					$this->m_pengguna->update_pengguna_tanpa_pass($kode, $nama, $jenkel, $username, $password, $email, $nohp, $level, $gambar);
 					echo $this->session->set_flashdata('msg', 'info');
@@ -129,7 +137,7 @@ class Pengguna extends CI_Controller {
 				}
 
 			} else {
-				echo $this->session->set_flashdata('msg', 'warning');
+				echo $this->session->set_flashdata('msg', 'info');
 				redirect('admin/pengguna');
 			}
 
@@ -152,7 +160,7 @@ class Pengguna extends CI_Controller {
 				redirect('admin/pengguna');
 			} else {
 				$this->m_pengguna->update_pengguna_tanpa_gambar($kode, $nama, $jenkel, $username, $password, $email, $nohp, $level);
-				echo $this->session->set_flashdata('msg', 'warning');
+				echo $this->session->set_flashdata('msg', 'info');
 				redirect('admin/pengguna');
 			}
 		}
@@ -161,11 +169,11 @@ class Pengguna extends CI_Controller {
 
 	function hapus_pengguna() {
 		$kode = $this->input->post('kode');
-		$data = $this->m_pengguna->get_pengguna_login($kode);
-		$q = $data->row_array();
-		$p = $q['photo'];
-		$path = base_url() . 'assets/images/' . $p;
-		delete_files($path);
+		$images = $this->input->post('gambar');
+		$path = './assets/images/' . $images;
+		if (file_exists($path)) {
+			unlink($path);
+		}
 		$this->m_pengguna->hapus_pengguna($kode);
 		echo $this->session->set_flashdata('msg', 'success-hapus');
 		redirect('admin/pengguna');

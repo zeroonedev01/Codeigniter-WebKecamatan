@@ -1,0 +1,1 @@
+[27-Jun-2019 12:36:23 Asia/Jakarta] PHP Fatal error:  Call to undefined function iconv() in /home/kecm3262/public_html/application/controllers/admin/Berita.php on line 47

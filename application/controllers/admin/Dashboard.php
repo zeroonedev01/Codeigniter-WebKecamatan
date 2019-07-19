@@ -6,10 +6,12 @@ class Dashboard extends CI_Controller {
 			$url = base_url('administrator');
 			redirect($url);
 		};
+		$this->load->model('m_identitas');
 		$this->load->model('m_pengunjung');
 	}
 	function index() {
 		if ($this->session->userdata('akses') == '1') {
+			$x['iden'] = $this->m_identitas->get_all_identitas();
 			$x['visitor'] = $this->m_pengunjung->statistik_pengujung();
 			$this->load->view('admin/v_dashboard', $x);
 		} else {

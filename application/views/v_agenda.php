@@ -34,19 +34,13 @@ $this->load->view('template/menu')?>
               <td>
                 <?php
 if ($startdate == $enddate) {echo ($startdate);} else {
-	echo ("$startdate - $enddate");
+	echo ($startdate . ' - ' . $enddate);
 }
 
 ?>
              </td>
 
            </tr>
-           <tr>
-            <th scope="row">Jam</th>
-            <td>:</td>
-            <td><?php echo $waktu ?></td>
-
-          </tr>
           <tr>
             <th scope="row">Agenda</th>
             <td>:</td>

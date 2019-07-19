@@ -6,6 +6,7 @@ class Berita extends CI_Controller {
 			$url = base_url('administrator');
 			redirect($url);
 		};
+		$this->load->model('m_identitas');
 		$this->load->model('m_kategori');
 		$this->load->model('m_berita');
 		$this->load->model('m_pengguna');
@@ -13,18 +14,49 @@ class Berita extends CI_Controller {
 	}
 
 	function index() {
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$x['data'] = $this->m_berita->tampil_berita();
 		$this->load->view('admin/v_berita', $x);
 	}
 	function add_berita() {
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$x['kat'] = $this->m_kategori->get_all_kategori();
 		$this->load->view('admin/v_add_berita', $x);
 	}
 	function get_edit() {
 		$kode = $this->uri->segment(4);
 		$x['data'] = $this->m_berita->get_berita_by_kode($kode);
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$x['kat'] = $this->m_kategori->get_all_kategori();
 		$this->load->view('admin/v_edit_berita', $x);
+	}
+	//generate slug
+	public function slugify($string) {
+		//remove prepositions
+		$preps = array('in', 'at', 'on', 'by', 'into', 'off', 'onto', 'from', 'to', 'with', 'a', 'an', 'the');
+		$pattern = '/\b(?:' . join('|', $preps) . ')\b/i';
+		$string = preg_replace($pattern, '', $string);
+
+		// replace non letter or digits by -
+		$string = preg_replace('~[^\\pL\d]+~u', '-', $string);
+
+		// trim
+		$string = trim($string, '-');
+
+		// transliterate
+// 		$string = iconv('utf-8', 'us-ascii//TRANSLIT', $string);
+
+		// lowercase
+		$string = strtolower($string);
+
+		// remove unwanted characters
+		$string = preg_replace('~[^-\w]+~', '', $string);
+
+		if (empty($string)) {
+			return 'n-a';
+		}
+
+		return $string;
 	}
 	function simpan_berita() {
 		$config['upload_path'] = './assets/images/'; //path folder
@@ -50,16 +82,14 @@ class Berita extends CI_Controller {
 				$gambar = $gbr['file_name'];
 				$judul = strip_tags($this->input->post('xjudul'));
 				$isi = $this->input->post('xisi');
-				$string = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $judul);
-				$trim = trim($string);
-				$slug = strtolower(str_replace(" ", "-", $trim));
+			    $slug = $this->slugify($judul);
 				$kategoriid = strip_tags($this->input->post('xkategori'));
-				$data = $this->m_kategori->get_kategori_byid($kategori_id);
 				$kode = $this->session->userdata('idadmin');
 				$user = $this->m_pengguna->get_pengguna_login($kode);
 				$p = $user->row_array();
 				$userid = $p['id'];
-				$this->m_berita->simpan_berita($judul, $isi, $kategoriid, $userid, $gambar, $slug);
+				$tanggal = date("Y-m-d H:i:s");
+				$this->m_berita->simpan_berita($judul, $isi, $kategoriid, $userid, $gambar, $slug, $tanggal);
 				echo $this->session->set_flashdata('msg', 'success');
 				redirect('admin/berita');
 			} else {
@@ -94,21 +124,23 @@ class Berita extends CI_Controller {
 				$config['new_image'] = './assets/images/' . $gbr['file_name'];
 				$this->load->library('image_lib', $config);
 				$this->image_lib->resize();
-
+				$images = $this->input->post('gambar');
+				$path = './assets/images/' . $images;
+				if (file_exists($path)) {
+					unlink($path);
+				}
 				$gambar = $gbr['file_name'];
 				$id = $this->input->post('kode');
 				$judul = strip_tags($this->input->post('xjudul'));
 				$isi = $this->input->post('xisi');
-				$string = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $judul);
-				$trim = trim($string);
-				$slug = strtolower(str_replace(" ", "-", $trim));
+				$slug = $this->slugify($judul);
 				$kategoriid = strip_tags($this->input->post('xkategori'));
 				$kode = $this->session->userdata('idadmin');
 				$user = $this->m_pengguna->get_pengguna_login($kode);
 				$p = $user->row_array();
 				$userid = $p['id'];
-
-				$this->m_berita->update_berita($id, $judul, $isi, $kategoriid, $userid, $gambar, $slug);
+				$tanggal = date("Y-m-d H:i:s");
+				$this->m_berita->update_berita($id, $judul, $isi, $kategoriid, $userid, $gambar, $slug, $tanggal);
 				echo $this->session->set_flashdata('msg', 'info');
 				redirect('admin/berita');
 
@@ -121,15 +153,14 @@ class Berita extends CI_Controller {
 			$id = $this->input->post('kode');
 			$judul = strip_tags($this->input->post('xjudul'));
 			$isi = $this->input->post('xisi');
-			$string = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $judul);
-			$trim = trim($string);
-			$slug = strtolower(str_replace(" ", "-", $trim));
+			$slug = $this->slugify($judul);
 			$kategoriid = strip_tags($this->input->post('xkategori'));
 			$kode = $this->session->userdata('idadmin');
 			$user = $this->m_pengguna->get_pengguna_login($kode);
 			$p = $user->row_array();
 			$userid = $p['id'];
-			$this->m_berita->update_berita_tanpa_img($id, $judul, $isi, $kategoriid, $userid, $slug);
+			$tanggal1 = date("Y-m-d H:i:s");
+			$this->m_berita->update_berita_tanpa_img($id, $judul, $isi, $kategoriid, $userid, $slug, $tanggal1);
 			echo $this->session->set_flashdata('msg', 'info');
 			redirect('admin/berita');
 		}

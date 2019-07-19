@@ -1,0 +1,51 @@
+[13-Jul-2019 17:39:11 Asia/Jakarta] PHP Fatal error:  Call to undefined function mb_internal_encoding() in /home/kecm3262/public_html/assets/filemanager/config/config.php on line 7
+[13-Jul-2019 17:39:41 Asia/Jakarta] PHP Fatal error:  Call to undefined function mb_internal_encoding() in /home/kecm3262/public_html/assets/filemanager/config/config.php on line 7
+[13-Jul-2019 17:39:45 Asia/Jakarta] PHP Fatal error:  Call to undefined function mb_internal_encoding() in /home/kecm3262/public_html/assets/filemanager/config/config.php on line 7
+[13-Jul-2019 17:47:26 Asia/Jakarta] PHP Fatal error:  Call to undefined function mb_internal_encoding() in /home/kecm3262/public_html/assets/filemanager/config/config.php on line 7
+[13-Jul-2019 17:47:27 Asia/Jakarta] PHP Fatal error:  Call to undefined function mb_internal_encoding() in /home/kecm3262/public_html/assets/filemanager/config/config.php on line 7
+[13-Jul-2019 17:47:28 Asia/Jakarta] PHP Fatal error:  Call to undefined function mb_internal_encoding() in /home/kecm3262/public_html/assets/filemanager/config/config.php on line 7
+[13-Jul-2019 17:47:29 Asia/Jakarta] PHP Fatal error:  Call to undefined function mb_internal_encoding() in /home/kecm3262/public_html/assets/filemanager/config/config.php on line 7
+[13-Jul-2019 17:47:31 Asia/Jakarta] PHP Fatal error:  Call to undefined function mb_internal_encoding() in /home/kecm3262/public_html/assets/filemanager/config/config.php on line 7
+[13-Jul-2019 12:57:32 Europe/Rome] PHP Fatal error:  Uncaught Error: Call to undefined function mime_content_type() in /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php:2723
+Stack trace:
+#0 /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php(230): imageLib->openImage('../source/Berit...')
+#1 /home/kecm3262/public_html/assets/filemanager/include/utils.php(425): imageLib->__construct('../source/Berit...')
+#2 /home/kecm3262/public_html/assets/filemanager/UploadHandler.php(1483): create_img('../source/Berit...', '../thumbs/Berit...', 122, 91)
+#3 /home/kecm3262/public_html/assets/filemanager/UploadHandler.php(1432): UploadHandler->onUploadEnd(Array)
+#4 /home/kecm3262/public_html/assets/filemanager/UploadHandler.php(213): UploadHandler->post(false)
+#5 /home/kecm3262/public_html/assets/filemanager/UploadHandler.php(197): UploadHandler->initialize()
+#6 /home/kecm3262/public_html/assets/filemanager/upload.php(179): UploadHandler->__construct(Array, true, Array)
+#7 {main}
+  thrown in /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php on line 2723
+[13-Jul-2019 12:57:38 Europe/Rome] PHP Fatal error:  Uncaught Error: Call to undefined function mime_content_type() in /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php:2723
+Stack trace:
+#0 /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php(230): imageLib->openImage('../source/Berit...')
+#1 /home/kecm3262/public_html/assets/filemanager/include/utils.php(425): imageLib->__construct('../source/Berit...')
+#2 /home/kecm3262/public_html/assets/filemanager/dialog.php(1083): create_img('../source/Berit...', '../thumbs/Berit...', 122, 91, 'crop', Array)
+#3 {main}
+  thrown in /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php on line 2723
+[13-Jul-2019 12:57:41 Europe/Rome] PHP Fatal error:  Uncaught Error: Call to undefined function mime_content_type() in /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php:2723
+Stack trace:
+#0 /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php(230): imageLib->openImage('../source/Berit...')
+#1 /home/kecm3262/public_html/assets/filemanager/include/utils.php(425): imageLib->__construct('../source/Berit...')
+#2 /home/kecm3262/public_html/assets/filemanager/dialog.php(1083): create_img('../source/Berit...', '../thumbs/Berit...', 122, 91, 'crop', Array)
+#3 {main}
+  thrown in /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php on line 2723
+[13-Jul-2019 12:57:41 Europe/Rome] PHP Fatal error:  Uncaught Error: Call to undefined function mime_content_type() in /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php:2723
+Stack trace:
+#0 /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php(230): imageLib->openImage('../source/Berit...')
+#1 /home/kecm3262/public_html/assets/filemanager/include/utils.php(425): imageLib->__construct('../source/Berit...')
+#2 /home/kecm3262/public_html/assets/filemanager/dialog.php(1083): create_img('../source/Berit...', '../thumbs/Berit...', 122, 91, 'crop', Array)
+#3 {main}
+  thrown in /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php on line 2723
+[13-Jul-2019 12:57:54 Europe/Rome] PHP Fatal error:  Uncaught Error: Call to undefined function mime_content_type() in /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php:2723
+Stack trace:
+#0 /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php(230): imageLib->openImage('../source/Berit...')
+#1 /home/kecm3262/public_html/assets/filemanager/include/utils.php(425): imageLib->__construct('../source/Berit...')
+#2 /home/kecm3262/public_html/assets/filemanager/UploadHandler.php(1483): create_img('../source/Berit...', '../thumbs/Berit...', 122, 91)
+#3 /home/kecm3262/public_html/assets/filemanager/UploadHandler.php(1432): UploadHandler->onUploadEnd(Array)
+#4 /home/kecm3262/public_html/assets/filemanager/UploadHandler.php(213): UploadHandler->post(false)
+#5 /home/kecm3262/public_html/assets/filemanager/UploadHandler.php(197): UploadHandler->initialize()
+#6 /home/kecm3262/public_html/assets/filemanager/upload.php(179): UploadHandler->__construct(Array, true, Array)
+#7 {main}
+  thrown in /home/kecm3262/public_html/assets/filemanager/include/php_image_magician.php on line 2723

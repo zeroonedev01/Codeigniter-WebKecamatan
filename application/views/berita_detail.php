@@ -71,50 +71,50 @@ $colors = array(
 foreach ($show_komentar->result() as $row):
 	shuffle($colors);
 	?>
-						                 <div class="row">
-						                   <div class="col-md-12">
-						                     <div class="row">
-						                       <div class="col-md-2">
-						                         <div class="blodpost-tab-img" style="background-color:<?php echo reset($colors); ?>;width: 65px;height: 65px;border-radius:50px 50px 50px 50px;">
-						                           <center><h2 style="padding-top:20%;color:#fff;"><?php echo substr($row->nama, 0, 1); ?></h2></center>
-						                         </div>
-						                       </div>
-						                       <div class="col-md-10">
-						                         <div class="blogpost-tab-description">
-						                           <h6><?php echo $row->nama; ?></h6><small><em><?php echo date("d M Y H:i", strtotime($row->tanggal)); ?></em></small>
-						                           <p><?php echo $row->isi; ?></p>
-						                         </div>
-						                         <hr>
-						                       </div>
-						                     </div>
-						                   </div>
-						                 </div>
-						                 <?php
+													                 <div class="row">
+													                   <div class="col-md-12">
+													                     <div class="row">
+													                       <div class="col-md-2">
+													                         <div class="blodpost-tab-img" style="background-color:<?php echo reset($colors); ?>;width: 65px;height: 65px;border-radius:50px 50px 50px 50px;">
+													                           <center><h2 style="padding-top:20%;color:#fff;"><?php echo substr($row->nama, 0, 1); ?></h2></center>
+													                         </div>
+													                       </div>
+													                       <div class="col-md-10">
+													                         <div class="blogpost-tab-description">
+													                           <h6><?php echo $row->nama; ?></h6><small><em><?php echo date("d M Y H:i", strtotime($row->tanggal)); ?></em></small>
+													                           <p><?php echo $row->isi; ?></p>
+													                         </div>
+													                         <hr>
+													                       </div>
+													                     </div>
+													                   </div>
+													                 </div>
+													                 <?php
 	$id = $row->beritaid;
 	$id2 = $row->id;
 	$query = $this->db->query("SELECT * FROM tb_komentar WHERE status='1' AND parent='$id2' ORDER BY id ASC");
 	foreach ($query->result() as $res):
 		shuffle($colors);
 		?>
-												                  <div class="row">
-												                    <div class="col-md-12 offset-md-1">
-												                      <div class="row">
-												                        <div class="col-md-2">
-												                          <div class="blodpost-tab-img" style="background-color:<?php echo reset($colors); ?>;width: 65px;height: 65px;border-radius:50px 50px 50px 50px;">
-												                            <center><h2 style="padding-top:20%;color:#fff;"><?php echo substr($res->nama, 0, 1); ?></h2></center>
-												                          </div>
-												                        </div>
-												                        <div class="col-md-9">
-												                          <div class="blogpost-tab-description">
-												                            <h6><?php echo $res->nama; ?></h6><small><em><?php echo date("d M Y H:i", strtotime($res->tanggal)); ?></em></small>
-												                            <p><?php echo $res->isi; ?></p>
-												                          </div>
-												                        </div>
-												                      </div>
-												                    </div>
-												                  </div>
-												                <?php endforeach;?>
-						              <?php endforeach;?>
+																										                  <div class="row">
+																										                    <div class="col-md-12 offset-md-1">
+																										                      <div class="row">
+																										                        <div class="col-md-2">
+																										                          <div class="blodpost-tab-img" style="background-color:<?php echo reset($colors); ?>;width: 65px;height: 65px;border-radius:50px 50px 50px 50px;">
+																										                            <center><h2 style="padding-top:20%;color:#fff;"><?php echo substr($res->nama, 0, 1); ?></h2></center>
+																										                          </div>
+																										                        </div>
+																										                        <div class="col-md-9">
+																										                          <div class="blogpost-tab-description">
+																										                            <h6><?php echo $res->nama; ?></h6><small><em><?php echo date("d M Y H:i", strtotime($res->tanggal)); ?></em></small>
+																										                            <p><?php echo $res->isi; ?></p>
+																										                          </div>
+																										                        </div>
+																										                      </div>
+																										                    </div>
+																										                  </div>
+																										                <?php endforeach;?>
+													              <?php endforeach;?>
             </div>
             <div class="tab-pane" id="write-comment" role="tabpanel">
               <form action="<?php echo site_url('berita/komentar'); ?>" method="post">

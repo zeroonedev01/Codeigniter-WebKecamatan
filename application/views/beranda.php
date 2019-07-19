@@ -13,17 +13,16 @@ $x = 0;
 foreach ($slider->result_array() as $i):
 	$x++;
 	?>
-
-																			       <div class="carousel-item<?php if ($x == 1) {echo ' active';}?>">
-																			        <img style="z-index: -1; opacity: 0.5;" class="first-slide" src="<?php echo 'assets/images/slider/' . $i['gambar'] ?>" alt="First slide">
-																			        <div class="container" style="z-index: 1">
-																			          <div class="carousel-caption">
-																			            <h1>Selamat Datang di Portal Resmi</h1>
-																			            <h2>Pemerintah Kecamatan Kalimanah</h2>
-																			          </div>
-																			        </div>
-																			      </div>
-																			    <?php endforeach;?>
+			       <div class="carousel-item<?php if ($x == 1) {echo ' active';}?>">
+			        <img style="z-index: -1; opacity: 0.8;" class="first-slide" src="<?php echo 'assets/images/slider/' . $i['gambar'] ?>" alt="First slide">
+			        <div class="container" style="z-index: 1">
+			          <div class="carousel-caption">
+			            <h1><b>Selamat Datang di Portal Resmi</b></h1>
+			            <h2><b>Pemerintah Kecamatan Kalimanah</b></h2>
+			          </div>
+			        </div>
+			      </div>
+			    <?php endforeach;?>
   </div>
   <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -69,7 +68,7 @@ $b = $ber_pertama->row_array();
                 <p><?php echo limit_words($b['isi'], 10) . '...'; ?></p>
                 <!-- Post Meta -->
                 <div class="post-meta">
-                  <p><i class="fa fa-calendar"></i> Posted <?php echo $b['nama'] . ' pada ' . $b['tanggal'] ?>  </p>
+                  <p><i class="fa fa-calendar"></i> Posted <?php echo $b['nama'] . ' pada ' . $b['tanggal1'] ?>  </p>
                 </div>
               </div>
             </div>
@@ -91,7 +90,7 @@ $b = $ber_pertama->row_array();
                    </a>
                    <!-- Post Meta -->
                    <div class="post-meta">
-                    <p><i class="fa fa-calendar"></i>   Posted <?php echo $row->tanggal; ?></p>
+                    <p><i class="fa fa-calendar"></i>   Posted <?php echo $row->tanggal1; ?></p>
                   </div>
                 </div>
               </div>
@@ -127,7 +126,7 @@ $b = $ber_pertama->row_array();
                 </a>
                 <!-- Post Meta -->
                 <div class="post-meta">
-                  <p><i class="fa fa-calendar"></i> Posted <?php echo $b['tanggal'] ?>  </p>
+                  <p><i class="fa fa-calendar"></i> Posted <?php echo $row->tanggal1 ?>  </p>
                 </div>
               </div>
             </div>
@@ -155,7 +154,7 @@ $b = $ber_pertama->row_array();
               </a>
               <!-- Post Meta -->
               <div class="post-meta">
-                <p><i class="fa fa-calendar"></i> Posted <?php echo $b['tanggal'] ?>  </p>
+                <p><i class="fa fa-calendar"></i> Posted <?php echo $row->tanggal1 ?>  </p>
               </div>
             </div>
           </div>
@@ -189,10 +188,10 @@ $b = $ber_pertama->row_array();
              <div class="card">
               <img class="card-img-top" src="<?php echo 'assets/images/potensi/' . $row->gambar ?>" alt="Card image cap">
               <div class="card-body">
-                <a href="<?php echo site_url('potensi/vw:' . $row->slug); ?>"><h5 class="card-title"><?php echo $row->judul ?></h5></a>
+                <a href="<?php echo site_url('potensi/vw:' . $row->slug); ?>"><h6 class="card-title"><?php echo $row->judul ?></h6></a>
               </div>
               <div class="card-footer">
-                <small class="text-muted"><i class="fa fa-calendar"></i> Posted <?php echo $row->tanggal ?></small>
+                <small class="text-muted"><i class="fa fa-calendar"></i> Posted <?php echo $row->tanggal1 ?></small>
               </div>
             </div>
           </div>
@@ -210,29 +209,29 @@ $b = $ber_pertama->row_array();
  <!-- <div class="row"> -->
  <!--  <div class="col-sm-4 col-md-4">
 
-  </div> -->
-  <br>
-  <div class="col-sm-12 col-md-12">
-    <div class="row">
-     <?php foreach ($galeri->result() as $row): ?>
-      <div class="col-sm-2  col-md-2" >
-        <div class="hovereffect">
-          <a href="<?php echo site_url('gallery') ?>" class="media-item">
-            <img src="<?php echo site_url('assets/images/') . $row->gambar ?>" alt="" class="img-fluid bg1">
-            <i class="fa fa-camera icon fa-2x" style="color: gray;right: 10px;position: absolute;top: 7px;"></i>
-            <div class="overlay">
-              <h2><?php echo $row->judul ?></h2>
-           </div>
-         </a>
-       </div>
-     </div>
-   <?php endforeach;?>
- </div>
-
-
- <div id="instafeed" class="row">
- </div>
+ </div> -->
  <br>
+ <div class="col-sm-12 col-md-12">
+  <div class="row">
+   <?php foreach ($galeri->result() as $row): ?>
+    <div class="col-sm-2  col-md-2" >
+      <div class="hovereffect">
+        <a href="<?php echo site_url('gallery') ?>" class="media-item">
+          <img src="<?php echo site_url('assets/images/') . $row->gambar ?>" alt="" class="img-fluid bg1">
+          <i class="fa fa-camera icon fa-2x" style="color: gray;right: 10px;position: absolute;top: 7px;"></i>
+          <div class="overlay">
+            <h2><?php echo $row->judul ?></h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  <?php endforeach;?>
+</div>
+
+
+<div id="instafeed" class="row">
+</div>
+<br>
 
 
 </div>

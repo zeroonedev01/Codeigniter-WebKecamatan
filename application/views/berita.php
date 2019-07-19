@@ -46,8 +46,8 @@ $this->load->view('template/menu')?>
         </ul> -->
 
         <?php
-// error_reporting(0);
-echo $page; ?>
+error_reporting(0);
+echo $page;?>
 
       </div>
 

@@ -6,10 +6,12 @@ class Inbox extends CI_Controller {
 			$url = base_url('administrator');
 			redirect($url);
 		};
+		$this->load->model('m_identitas');
 		$this->load->model('m_kontak');
 	}
 
 	function index() {
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$this->m_kontak->update_status_kontak();
 		$x['data'] = $this->m_kontak->get_all_inbox();
 		$this->load->view('admin/v_inbox', $x);

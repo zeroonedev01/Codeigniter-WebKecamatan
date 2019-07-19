@@ -22,7 +22,7 @@
            </a>
            <!-- Post Meta -->
            <div class="post-meta">
-            <p><i class="fa fa-calendar"></i> Posted <?php echo date("d", strtotime($row->tanggal)); ?> <?php echo date("M Y", strtotime($row->tanggal)); ?></p>
+            <p><i class="fa fa-calendar"></i> Posted <?php echo date("d", strtotime($row->tanggal1)); ?> <?php echo date("M Y", strtotime($row->tanggal1)); ?></p>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
         <h5><?php echo $row->judul; ?></h5>
       </a>
       <div class="post-meta">
-        <p><i class="fa fa-calendar"></i> Posted <?php echo date("d", strtotime($row->tanggal)); ?> <?php echo date("M Y", strtotime($row->tanggal)); ?></p>
+        <p><i class="fa fa-calendar"></i> Posted <?php echo date("d", strtotime($row->tanggal1)); ?> <?php echo date("M Y", strtotime($row->tanggal1)); ?></p>
       </div>
     </div>
   </div>
@@ -72,7 +72,7 @@
           </a>
           <!-- Post Meta -->
           <div class="post-meta">
-            <p><i class="fa fa-calendar"></i> Posted <?php echo date("d", strtotime($row->tanggal)); ?> <?php echo date("M Y", strtotime($row->tanggal)); ?></p>
+            <p><i class="fa fa-calendar"></i> Posted <?php echo date("d", strtotime($row->tanggal1)); ?> <?php echo date("M Y", strtotime($row->tanggal1)); ?></p>
           </div>
         </div>
       </div>
@@ -100,7 +100,7 @@
          </a>
          <!-- Post Meta -->
          <div class="post-meta">
-          <p><i class="fa fa-calendar"></i> Posted <?php echo date("d", strtotime($row->tanggal)); ?> <?php echo date("M Y", strtotime($row->tanggal)); ?></p>
+          <p><i class="fa fa-calendar"></i> Posted <?php echo date("d", strtotime($row->tanggal1)); ?> <?php echo date("M Y", strtotime($row->tanggal1)); ?></p>
         </div>
       </div>
     </div>
@@ -119,7 +119,7 @@
   <div class="blog-category_block">
     <ul>
       <?php foreach ($allkate->result() as $row): ?>
-        <li><a href="<?php echo site_url('blog/kategori/' . str_replace(" ", "-", $row->nama)); ?>"><?php echo $row->nama; ?><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
+        <li><a href="<?php echo site_url('berita/kategori/' . str_replace(" ", "-", $row->nama)); ?>"><?php echo $row->nama; ?><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
       <?php endforeach;?>
     </ul>
   </div>

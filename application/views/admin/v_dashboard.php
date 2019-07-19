@@ -179,11 +179,11 @@ foreach ($query->result_array() as $i):
 	$judul = $i['judul'];
 	$tayang = $i['tayang'];
 	?>
-																																				                   <tr>
-																																				                    <td><?php echo $judul; ?></td>
-																																				                    <td><?php echo $tayang . ' Views'; ?></td>
-																																				                  </tr>
-																																				                <?php endforeach;?>
+																																					                   <tr>
+																																					                    <td><?php echo $judul; ?></td>
+																																					                    <td><?php echo $tayang . ' Views'; ?></td>
+																																					                  </tr>
+																																					                <?php endforeach;?>
               </table>
             </div>
 

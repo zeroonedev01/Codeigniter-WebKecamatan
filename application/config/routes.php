@@ -73,4 +73,4 @@ $route['media/instagram'] = 'instagram_gal';
 $route['media/gallery'] = 'gallery';
 
 $route['404_override'] = '';
-$route['translate_uri_dashes'] = true;
+$route['translate_uri_dashes'] = FALSE;

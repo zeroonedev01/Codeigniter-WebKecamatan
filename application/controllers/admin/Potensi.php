@@ -6,23 +6,55 @@ class Potensi extends CI_Controller {
 			$url = base_url('administrator');
 			redirect($url);
 		};
+		$this->load->model('m_identitas');
 		$this->load->model('m_potensi');
 		$this->load->model('m_pengguna');
 		$this->load->library('upload');
 	}
 
 	function index() {
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$x['data'] = $this->m_potensi->tampil_potensi();
 		$this->load->view('admin/v_potensi', $x);
 	}
 	function add_potensi() {
-		$this->load->view('admin/v_add_potensi');
+		$x['iden'] = $this->m_identitas->get_all_identitas();
+		$this->load->view('admin/v_add_potensi', $x);
 	}
 	function get_edit() {
 		$kode = $this->uri->segment(4);
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$x['data'] = $this->m_potensi->get_potensi_by_kode($kode);
 		$this->load->view('admin/v_edit_potensi', $x);
 	}
+	public function slugify($string) {
+		//remove prepositions
+		$preps = array('in', 'at', 'on', 'by', 'into', 'off', 'onto', 'from', 'to', 'with', 'a', 'an', 'the');
+		$pattern = '/\b(?:' . join('|', $preps) . ')\b/i';
+		$string = preg_replace($pattern, '', $string);
+
+		// replace non letter or digits by -
+		$string = preg_replace('~[^\\pL\d]+~u', '-', $string);
+
+		// trim
+		$string = trim($string, '-');
+
+		// transliterate
+		//$string = iconv('utf-8', 'us-ascii//TRANSLIT', $string);
+
+		// lowercase
+		$string = strtolower($string);
+
+		// remove unwanted characters
+		$string = preg_replace('~[^-\w]+~', '', $string);
+
+		if (empty($string)) {
+			return 'n-a';
+		}
+
+		return $string;
+	}
+
 	function simpan_potensi() {
 		$config['upload_path'] = './assets/images/potensi/'; //path folder
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
@@ -47,9 +79,7 @@ class Potensi extends CI_Controller {
 				$gambar = $gbr['file_name'];
 				$judul = strip_tags($this->input->post('xjudul'));
 				$isi = $this->input->post('xisi');
-				$string = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $judul);
-				$trim = trim($string);
-				$slug = strtolower(str_replace(" ", "-", $trim));
+				$slug = $this->slugify($judul);
 				$kode = $this->session->userdata('idadmin');
 				$user = $this->m_pengguna->get_pengguna_login($kode);
 				$p = $user->row_array();
@@ -94,9 +124,7 @@ class Potensi extends CI_Controller {
 				$id = $this->input->post('kode');
 				$judul = strip_tags($this->input->post('xjudul'));
 				$isi = $this->input->post('xisi');
-				$string = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $judul);
-				$trim = trim($string);
-				$slug = strtolower(str_replace(" ", "-", $trim));
+				$slug = $this->slugify($judul);
 				$kode = $this->session->userdata('idadmin');
 				$user = $this->m_pengguna->get_pengguna_login($kode);
 				$p = $user->row_array();
@@ -120,9 +148,7 @@ class Potensi extends CI_Controller {
 			$id = $this->input->post('kode');
 			$judul = strip_tags($this->input->post('xjudul'));
 			$isi = $this->input->post('xisi');
-			$string = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $judul);
-			$trim = trim($string);
-			$slug = strtolower(str_replace(" ", "-", $trim));
+		$slug = $this->slugify($judul);
 			$kode = $this->session->userdata('idadmin');
 			$user = $this->m_pengguna->get_pengguna_login($kode);
 			$p = $user->row_array();

@@ -14,6 +14,8 @@ class Desa extends CI_Controller {
 		$this->load->model('m_agenda');
 		$this->load->model('m_statis');
 		$this->load->model('m_pengunjung');
+		$this->load->model('m_instagram');
+		$this->load->model('m_identitas');
 		$this->m_pengunjung->count_visitor();
 	}
 	function index() {
@@ -23,6 +25,8 @@ class Desa extends CI_Controller {
 		$x['populer'] = $this->m_berita->get_berita_populer();
 		$x['beritaterbaru'] = $this->m_berita->get_berita_terbaru();
 		$x['statis'] = $this->m_statis->get_all_desa();
+		$x['ig'] = $this->m_instagram->get_all_instagram();
+		$x['iden'] = $this->m_identitas->get_all_identitas();
 		$this->load->view('denahpelayanan', $x);
 	}
 
